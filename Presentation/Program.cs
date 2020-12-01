@@ -1,5 +1,9 @@
 ﻿using System;
-using Domain.Models;
+using Domain.DTOs;
+using Domain.ViewModels;
+using Domain.Interfaces;
+using DataInjector;
+
 
 namespace Presentation
 {
@@ -7,10 +11,7 @@ namespace Presentation
     {
         static void Main(string[] args)
         {
-		Izvodjac izvodjac = new Izvodjac();
-		izvodjac.Naziv = "Denis";
 
-            Console.WriteLine(izvodjac.Show());
         }
     }
 }
