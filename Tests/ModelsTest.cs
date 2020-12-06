@@ -18,13 +18,13 @@ namespace Tests
 			_fonogram.Id = 123;
 			_fonogram.Naziv = "Nova pesma";
 			_fonogram.GodinaIzdanja = 1930;
-			_fonogram.KataloskiBroj = 55555;
+			_fonogram.KataloskiBroj = "55555";
 
 			_album = new Album();
 			_album.Id = 321;
 			_album.Naziv = "Novi album";
 			_album.GodinaIzdanja = 1930;
-			_album.KataloskiBroj = 55555;
+			_album.KataloskiBroj = "55555";
 			
 			_izvodjac = new Izvodjac();
 			_izvodjac.Id = 123;
@@ -44,7 +44,7 @@ namespace Tests
 			Assert.IsInstanceOfType(fonogram.Id, typeof(int));
 			Assert.IsInstanceOfType(fonogram.Naziv, typeof(string));
 			Assert.IsInstanceOfType(fonogram.GodinaIzdanja, typeof(int));
-			Assert.IsInstanceOfType(fonogram.KataloskiBroj, typeof(int));
+			Assert.IsInstanceOfType(fonogram.KataloskiBroj, typeof(string));
 			Assert.IsNotNull(fonogram.Id);
 			Assert.IsNotNull(fonogram.Naziv);
 			Assert.IsNotNull(fonogram.Izvodjaci);
@@ -78,7 +78,7 @@ namespace Tests
 			Assert.IsInstanceOfType(album.Id, typeof(int));
 			Assert.IsInstanceOfType(album.Naziv, typeof(string));
 			Assert.IsInstanceOfType(album.GodinaIzdanja, typeof(int));
-			Assert.IsInstanceOfType(album.KataloskiBroj, typeof(int));
+			Assert.IsInstanceOfType(album.KataloskiBroj, typeof(string));
 			Assert.IsNotNull(album.Fonogrami);
 			Assert.IsNotNull(album.Izvodjaci);
 			foreach(Izvodjac izvodjac in album.Izvodjaci)

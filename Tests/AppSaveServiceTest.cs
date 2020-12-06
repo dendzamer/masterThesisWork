@@ -28,7 +28,7 @@ namespace Tests
 			//arrange
 			IAlbumDTO album = new AlbumDTO();
 			album.Naziv = "Prvi Album";
-			album.KataloskiBroj = 12345;
+			album.KataloskiBroj = "12345";
 			album.GodinaIzdanja = 1987;
 
 			var mojAlbum = (AlbumViewModel)_service.SaveAlbum(album);
@@ -47,7 +47,7 @@ namespace Tests
 			//arrange
 			IFonogramDTO fonogram = new FonogramDTO();
 			fonogram.Naziv = "Pesma";
-			fonogram.KataloskiBroj = 1234;
+			fonogram.KataloskiBroj = "1234";
 			fonogram.GodinaIzdanja = 1987;
 			fonogram.AlbumId = 1;
 

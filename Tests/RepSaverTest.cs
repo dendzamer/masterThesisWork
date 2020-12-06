@@ -34,7 +34,7 @@ namespace Tests
 			//Arrange
 			IFonogramDTO idto = new FonogramDTO();
 			idto.Naziv = "Pesma 1";
-			idto.KataloskiBroj = 12345;
+			idto.KataloskiBroj = "12345";
 			idto.GodinaIzdanja = 1987;
 			idto.AlbumId = 12;
 
@@ -53,7 +53,7 @@ namespace Tests
 			//arrange
 			IAlbumDTO idto = new AlbumDTO();
 			idto.Naziv = "Prvi album";
-			idto.KataloskiBroj = 1234;
+			idto.KataloskiBroj = "1234";
 			idto.GodinaIzdanja = 1987;
 
 			//act

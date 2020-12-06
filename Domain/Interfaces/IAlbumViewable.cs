@@ -8,7 +8,7 @@ namespace Domain.Interfaces
 	{
 		List<Fonogram> Fonogrami {get; set;}
 		List<Izvodjac> Izvodjaci {get; set;}
-		int KataloskiBroj {get; set;}
+		string KataloskiBroj {get; set;}
 		int GodinaIzdanja {get; set;}
 	}
 }

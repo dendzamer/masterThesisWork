@@ -11,7 +11,7 @@ namespace Domain.ViewModels
 		public string Naziv {get; set;}
 		public string Izvodjaci {get; set;}
 		public int GodinaIzdanja {get; set;}
-		public int KataloskiBroj {get; set;}
+		public string KataloskiBroj {get; set;}
 		public string Fonogrami {get; set;}
 
 		public void SetData(IViewable data)

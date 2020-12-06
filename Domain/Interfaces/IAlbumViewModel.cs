@@ -7,6 +7,6 @@ namespace Domain.Interfaces
 		string Izvodjaci {get; set;}
 		string Fonogrami {get; set;}
 		int GodinaIzdanja {get; set;}
-		int KataloskiBroj {get; set;}
+		string KataloskiBroj {get; set;}
 	}
 }

@@ -10,7 +10,7 @@ namespace Domain.Models
 		public string Naziv {get; set;}
 		public List<Izvodjac> Izvodjaci {get; set;}
 		public int GodinaIzdanja {get; set;}
-		public int KataloskiBroj {get; set;}
+		public string KataloskiBroj {get; set;}
 
 		public Fonogram()
 		{

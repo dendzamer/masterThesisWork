@@ -20,13 +20,13 @@ namespace Test
 			_fonogram.Id = 123;
 			_fonogram.Naziv = "Nova pesma";
 			_fonogram.GodinaIzdanja = 1930;
-			_fonogram.KataloskiBroj = 55555;
+			_fonogram.KataloskiBroj = "55555";
 
 			_album = new Album();
 			_album.Id = 321;
 			_album.Naziv = "Novi Album";
 			_album.GodinaIzdanja = 1930;
-			_album.KataloskiBroj = 555555;
+			_album.KataloskiBroj = "555555";
 
 			_izvodjac = new Izvodjac();
 			_izvodjac.Id = 123;
@@ -50,7 +50,7 @@ namespace Test
 			Assert.IsInstanceOfType(albumView.Naziv,typeof(string));
 			Assert.IsInstanceOfType(albumView.Izvodjaci,typeof(string));
 			Assert.IsInstanceOfType(albumView.GodinaIzdanja,typeof(int));
-			Assert.IsInstanceOfType(albumView.KataloskiBroj,typeof(int));
+			Assert.IsInstanceOfType(albumView.KataloskiBroj,typeof(string));
 			Assert.IsInstanceOfType(albumView.Fonogrami,typeof(string));
 			Assert.AreEqual(albumView.Id, _album.Id);
 			Assert.AreEqual(albumView.Naziv, _album.Naziv);
@@ -77,7 +77,7 @@ namespace Test
 			Assert.IsInstanceOfType(fonogramView.Naziv,typeof(string));
 			Assert.IsInstanceOfType(fonogramView.Izvodjaci,typeof(string));
 			Assert.IsInstanceOfType(fonogramView.GodinaIzdanja,typeof(int));
-			Assert.IsInstanceOfType(fonogramView.KataloskiBroj,typeof(int));
+			Assert.IsInstanceOfType(fonogramView.KataloskiBroj,typeof(string));
 			Assert.AreEqual(fonogramView.Id,_fonogram.Id);
 			Assert.AreEqual(fonogramView.Naziv,_fonogram.Naziv);
 			Assert.AreEqual(fonogramView.GodinaIzdanja,_fonogram.GodinaIzdanja);

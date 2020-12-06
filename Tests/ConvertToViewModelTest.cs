@@ -21,13 +21,13 @@ namespace Tests
 			_fonogram.Id = 123;
 			_fonogram.Naziv = "Nova pesma";
 			_fonogram.GodinaIzdanja = 1930;
-			_fonogram.KataloskiBroj = 5555;
+			_fonogram.KataloskiBroj = "5555";
 
 			_album = new Album();
 			_album.Id = 321;
 			_album.Naziv = "Novi album";
 			_album.GodinaIzdanja = 1930;
-			_album.KataloskiBroj = 5555;
+			_album.KataloskiBroj = "5555";
 
 			_izvodjac = new Izvodjac();
 			_izvodjac.Id = 123;

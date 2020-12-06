@@ -1,9 +1,4 @@
 ﻿using System;
-using Domain.DTOs;
-using Domain.ViewModels;
-using Domain.Interfaces;
-using DataInjector;
-
 
 namespace Presentation
 {
@@ -11,7 +6,7 @@ namespace Presentation
     {
         static void Main(string[] args)
         {
-
+            Console.WriteLine("Hello World!");
         }
     }
 }

@@ -8,6 +8,6 @@ namespace Domain.Interfaces
 	{
 		List<Izvodjac> Izvodjaci {get; set;}
 		int GodinaIzdanja {get; set;}
-		int KataloskiBroj {get; set;}
+		string KataloskiBroj {get; set;}
 	}
 }
