@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Persistence.Interfaces;
 
 namespace Persistence.Models
 {
-	public class Album
+	public class Album : IDbAlbum
 	{
 		public int AlbumId {get; set;}
 		public string Naziv {get; set;}

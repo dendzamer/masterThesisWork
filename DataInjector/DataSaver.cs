@@ -37,7 +37,7 @@ namespace DataInjector
 		    }
 	    }
 
-	    public IViewModel getViewModel()
+	    public IViewModel GetViewModel()
 	    {
 		    return _resultViewModel;
 	    }

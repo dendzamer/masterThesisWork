@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Persistence.Interfaces;
 
 namespace Persistence.Models
 {
-	public class Fonogram
+	public class Fonogram : IDbFonogram
 	{
 		public int FonogramId {get; set;}
 		public string Naziv {get; set;}
