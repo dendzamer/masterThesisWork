@@ -12,6 +12,5 @@ namespace Persistence.Models
 		public string KataloskiBroj {get; set;}
 
 		public List<Fonogram> Fonogrami {get; set;} = new List<Fonogram>();
-		public List<Izvodjac> Izvodjaci {get; set;} = new List<Izvodjac>();
 	}
 }

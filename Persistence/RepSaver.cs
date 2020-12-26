@@ -5,7 +5,6 @@ using Domain.Interfaces;
 using Persistence.Models;
 using Persistence.Converters;
 using Persistence.RepTools;
-using static System.Console;
 
 namespace Persistence
 {
@@ -16,8 +15,7 @@ namespace Persistence
 		public void Album(IDTO idto)
 		{
 			Album album = DtoToDbModels.ConvertToAlbum(idto as IAlbumDTO);
-			album = Saver.SaveAlbum(album);
-			WriteLine("{0}, {1}, {2}, {3}", album.AlbumId, album.Naziv, album.GodinaIzdanja, album.KataloskiBroj);
+			Saver.SaveAlbum(album);
 
 			_viewable = DbModelsToViewable.ConvertToAlbumViewable(album);
 		
@@ -25,13 +23,19 @@ namespace Persistence
 		
 		public void Fonogram(IDTO idto)
 		{
-			
+			Fonogram fonogram = DtoToDbModels.ConvertToFonogram(idto as IFonogramDTO);
+			Saver.SaveFonogram(fonogram);
 
+			_viewable = DbModelsToViewable.ConvertToFonogramViewable(fonogram);
 		}
+
 		
 		public void Izvodjac(IDTO idto)
 		{
+			Izvodjac izvodjac = DtoToDbModels.ConvertToIzvodjac(idto as IDTO);
+			Saver.SaveIzvodjac(izvodjac);
 
+			_viewable = DbModelsToViewable.ConvertToIzvodjacViewable(izvodjac);
 		}
 
 		public IViewable GetViewable()

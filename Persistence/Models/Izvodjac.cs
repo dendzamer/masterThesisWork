@@ -9,7 +9,6 @@ namespace Persistence.Models
 		public int IzvodjacId {get; set;}
 		public string Naziv {get; set;}
 		
-		public List<Album> Albumi {get; set;}
-		public List<Fonogram> Fonogrami {get; set;}
+		public List<Fonogram> Fonogrami {get; set;} = new List<Fonogram>();
 	}
 }

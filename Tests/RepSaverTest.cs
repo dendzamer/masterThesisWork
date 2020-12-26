@@ -36,7 +36,7 @@ namespace Tests
 			idto.Naziv = "Pesma 1";
 			idto.KataloskiBroj = "12345";
 			idto.GodinaIzdanja = 1987;
-			idto.AlbumId = 12;
+			idto.AlbumId = 1;
 
 			//Act
 			_saver.Fonogram(idto);

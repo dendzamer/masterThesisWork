@@ -8,7 +8,6 @@ namespace Persistence.Interfaces
 	{
 		int IzvodjacId {get; set;}
 
-		List<Album> Albumi {get; set;}
 		List<Fonogram> Fonogrami {get; set;}
 	}
 }

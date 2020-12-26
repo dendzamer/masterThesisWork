@@ -12,6 +12,5 @@ namespace Persistence.Interfaces
 		string KataloskiBroj {get; set;}
 
 		List<Fonogram> Fonogrami {get; set;}
-		List<Izvodjac> Izvodjaci {get; set;}
 	}
 }
