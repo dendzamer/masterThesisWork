@@ -6,6 +6,7 @@ namespace Domain.DTOs
 {
 	public class FonogramDTO : IFonogramDTO
 	{
+		public int Id {get; set;}
 		public string Naziv {get; set;}
 		public string KataloskiBroj {get; set;}
 		public int GodinaIzdanja {get; set;}
