@@ -2,6 +2,7 @@ using System;
 using Persistence.Interfaces;
 using Domain.Models;
 using Domain.Interfaces;
+using Persistence.RepTools.Retrieve;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,7 +10,7 @@ namespace Persistence.Converters
 {
 	public class DbModelsToViewable
 	{
-		public static IViewable ConvertToAlbumViewable(IDbAlbum input)
+		public IViewable ConvertToAlbumViewable(IDbAlbum input)
 		{
 			IAlbumViewable album = populateAlbum(input);
 
@@ -30,7 +31,7 @@ namespace Persistence.Converters
 			return album;
 		}
 
-		public static IViewable ConvertToFonogramViewable(IDbFonogram input)
+		public IViewable ConvertToFonogramViewable(IDbFonogram input)
 		{
 			IFonogramViewable fonogram = populateFonogram(input);
 
@@ -42,9 +43,10 @@ namespace Persistence.Converters
 			return fonogram;
 		}
 		
-		public static IViewable ConvertToIzvodjacViewable(IDbIzvodjac input)
+		public IViewable ConvertToIzvodjacViewable(IDbIzvodjac input)
 		{
 			IIzvodjacViewable izvodjac = populateIzvodjac(input);
+			RetrieveAlbum _retrieve = new RetrieveAlbum();
 
 			foreach (var fonogram in input.Fonogrami)
 			{
@@ -53,9 +55,11 @@ namespace Persistence.Converters
 
 			foreach (var fonogram in input.Fonogrami)
 			{
-				if (!izvodjac.Albumi.Any(element => element.Id == fonogram.Album.AlbumId))
+				if (!izvodjac.Albumi.Any(element => element.Id == fonogram.AlbumId))
 				{
-					izvodjac.Albumi.Add(populateAlbum(fonogram.Album) as Album);
+					IDbAlbum album = _retrieve.AlbumWithoutFonogram(fonogram.AlbumId);
+				
+					izvodjac.Albumi.Add(populateAlbum(album) as Album);
 				}
 			}
 
@@ -63,7 +67,7 @@ namespace Persistence.Converters
 		}
 
 		
-		private static IAlbumViewable populateAlbum(IDbAlbum input)
+		private IAlbumViewable populateAlbum(IDbAlbum input)
 		{
 			IAlbumViewable album = new Album();
 
@@ -75,7 +79,7 @@ namespace Persistence.Converters
 			return album;
 		}
 
-		private static IFonogramViewable populateFonogram(IDbFonogram input)
+		private IFonogramViewable populateFonogram(IDbFonogram input)
 		{
 			IFonogramViewable fonogram = new Fonogram();
 
@@ -87,7 +91,7 @@ namespace Persistence.Converters
 			return fonogram;
 		}
 		
-		private static IIzvodjacViewable populateIzvodjac(IDbIzvodjac input)
+		private IIzvodjacViewable populateIzvodjac(IDbIzvodjac input)
 		{
 			IIzvodjacViewable izvodjac = new Izvodjac();
 

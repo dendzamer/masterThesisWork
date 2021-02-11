@@ -3,12 +3,13 @@ using Persistence.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Collections.Generic;
+using static System.Console;
 
 namespace Persistence.RepTools
 {
 	public class Saver
 	{
-		static public void SaveAlbum(Album input)
+		public void SaveAlbum(Album input)
 		{
 			using (var db = new BazaContext())
 			{
@@ -18,7 +19,7 @@ namespace Persistence.RepTools
 			}
 		}
 
-		static public void SaveIzvodjac(Izvodjac input)
+		public void SaveIzvodjac(Izvodjac input)
 		{
 			using (var db = new BazaContext())
 			{
@@ -28,14 +29,17 @@ namespace Persistence.RepTools
 			}
 		}
 
-		static public void SaveFonogram(Fonogram input)
+		public Fonogram SaveFonogram(Fonogram input)
 		{
 			using (var db = new BazaContext())
 			{
-				db.Database.EnsureCreated();
+
+				Fonogram fonogram = input;
 				Album album = db.Albumi.Single(p => p.AlbumId == input.AlbumId);
-				album.Fonogrami.Add(input);
+				album.Fonogrami.Add(fonogram);
 				db.SaveChanges();
+
+				return fonogram;
 			}
 		}
 	}

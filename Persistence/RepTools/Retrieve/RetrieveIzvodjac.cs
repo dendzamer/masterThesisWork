@@ -2,20 +2,38 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Persistence.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.RepTools.Retrieve
 {
-	public static class RetrieveIzvodjac
+	public class RetrieveIzvodjac
 	{
-		public static Izvodjac GetById(int input)
+		public Izvodjac GetById(int input)
 		{
 			using (var db = new BazaContext())
 			{
-				Izvodjac izvodjac = db.Izvodjaci.Single(p => p.IzvodjacId == input);
+				IQueryable<Izvodjac> izvodjaci = db.Izvodjaci.Include(p => p.Fonogrami);
+
+				Izvodjac izvodjac = izvodjaci.Single(p => p.IzvodjacId == input);
 				db.SaveChanges();
 				
 				return izvodjac;
 			}
 		}
+
+		public Izvodjac IzvodjacWithoutFonogram(int input)
+		{
+			using (var db = new BazaContext())
+			{
+				IQueryable<Izvodjac> izvodjaci = db.Izvodjaci;
+
+				Izvodjac izvodjac = izvodjaci.Single(p => p.IzvodjacId == input);
+				db.SaveChanges();
+
+				return izvodjac;
+			}
+		}
+
+	
 	}
 }
