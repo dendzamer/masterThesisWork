@@ -9,6 +9,7 @@ namespace Persistence.Interfaces
 		int FonogramId {get; set;}
 		int GodinaIzdanja {get; set;}
 		string KataloskiBroj {get; set;}
+		int AlbumId {get; set;}
 
 		List<Izvodjac> Izvodjaci {get; set;}
 	}

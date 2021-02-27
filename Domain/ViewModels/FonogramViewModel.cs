@@ -12,6 +12,7 @@ namespace Domain.ViewModels
 		public string Izvodjaci {get; set;}
 		public int GodinaIzdanja {get; set;}
 		public string KataloskiBroj {get; set;}
+		public string AlbumNaziv {get; set;}
 		
 		public void SetData(IViewable data)
 		{
@@ -21,6 +22,7 @@ namespace Domain.ViewModels
 			SetIzvodjaci(fonogram);
 			GodinaIzdanja = fonogram.GodinaIzdanja;
 			KataloskiBroj = fonogram.KataloskiBroj;
+			AlbumNaziv = fonogram.AlbumNaziv;
 		}
 		
 		private void SetIzvodjaci(IFonogramViewable fonogram)

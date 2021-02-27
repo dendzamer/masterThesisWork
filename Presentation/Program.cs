@@ -14,14 +14,14 @@ namespace Presentation
 		
 		//CreateAlbum();
 		//CreateIzvodjac("Neki John");
-		//CreateFonogram("Nova pesma");
+		CreateFonogram("Bas super pesma");
 		//ReadAlbum();
 		//ReadIzvodjac();
 		//ReadFonogram();
 
 		//UpdateFonogram("Four");
 		//UpdateIzvodjac("Charles Darwin");
-		UpdateAlbum();
+		//UpdateAlbum();
 		
 
         }
@@ -85,7 +85,7 @@ namespace Presentation
 		
 		fonogram.Naziv = naziv;
 		fonogram.KataloskiBroj = "0888072301290";
-		fonogram.AlbumId = 1;
+		fonogram.AlbumId = 2;
 		fonogram.GodinaIzdanja = 2007;
 		fonogram.IzvodjacId.Add(8);
 		fonogram.IzvodjacId.Add(9);
@@ -157,11 +157,11 @@ namespace Presentation
 	{
 		InjectSRU inject = new InjectSRU();
 		IFonogramDTO fonogram = new FonogramDTO();
-		fonogram.Id = 12;
+		fonogram.Id = 13;
 
 		IFonogramViewModel fonogramView = inject.ReadData(fonogram) as FonogramViewModel;
 
-		string result = $"\n{fonogramView.Id}\n{fonogramView.Naziv}\n{fonogramView.KataloskiBroj}\n{fonogramView.GodinaIzdanja}\n{fonogramView.Izvodjaci}\n";
+		string result = $"\n{fonogramView.Id}\n{fonogramView.Naziv}\n{fonogramView.KataloskiBroj}\n{fonogramView.GodinaIzdanja}\n{fonogramView.Izvodjaci}\n{fonogramView.AlbumNaziv}";
 
 		Console.WriteLine(result);
 	}

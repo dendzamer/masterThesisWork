@@ -9,38 +9,27 @@ namespace Persistence
 	public class RepRetriever : IRepository
 	{
 		private IViewable _viewable;
-		private DtoToDbModels _toDBModels;
-		private DbModelsToViewable _toViewable;
 
-		public RepRetriever()
-		{
-			_toDBModels = new DtoToDbModels();
-			_toViewable = new DbModelsToViewable();
-
-		}
 
 		public void Album(IDTO idto)
 		{
-			RetrieveAlbum _retrieve = new RetrieveAlbum();
-			Album album = _retrieve.GetById(idto.Id);
+			Album album = RetrieveAlbum.GetById(idto.Id);
 
-			_viewable = _toViewable.ConvertToAlbumViewable(album);
+			_viewable = DbModelsToViewable.ConvertToAlbumViewable(album);
 		}
 
 		public void Fonogram(IDTO idto)
 		{
-			RetrieveFonogram _retrieve = new RetrieveFonogram();
-			Fonogram fonogram = _retrieve.GetById(idto.Id);
+			Fonogram fonogram = RetrieveFonogram.GetById(idto.Id);
 
-			_viewable = _toViewable.ConvertToFonogramViewable(fonogram);
+			_viewable = DbModelsToViewable.ConvertToFonogramViewable(fonogram);
 		}
 
 		public void Izvodjac(IDTO idto)
 		{
-			RetrieveIzvodjac _retrieve = new RetrieveIzvodjac();
-			Izvodjac izvodjac = _retrieve.GetById(idto.Id);
+			Izvodjac izvodjac = RetrieveIzvodjac.GetById(idto.Id);
 
-			_viewable = _toViewable.ConvertToIzvodjacViewable(izvodjac);
+			_viewable = DbModelsToViewable.ConvertToIzvodjacViewable(izvodjac);
 		}
 
 		public IViewable GetViewable()

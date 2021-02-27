@@ -21,8 +21,7 @@ namespace Persistence.RepTools
 
 				db.SaveChanges();
 
-				RetrieveAlbum retrieve = new RetrieveAlbum();
-				return retrieve.GetById(album.AlbumId);
+				return RetrieveAlbum.GetById(album.AlbumId);
 			}
 		}
 

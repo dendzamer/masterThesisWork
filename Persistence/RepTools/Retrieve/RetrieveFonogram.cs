@@ -8,7 +8,7 @@ namespace Persistence.RepTools.Retrieve
 {
 	public class RetrieveFonogram
 	{
-		public Fonogram GetById(int input)
+		public static Fonogram GetById(int input)
 		{
 			using (var db = new BazaContext())
 			{

@@ -4,13 +4,12 @@ using System.Linq;
 using Persistence.Models;
 using Microsoft.EntityFrameworkCore;
 
-using static System.Console;
 
 namespace Persistence.RepTools.Retrieve
 {
 	public class RetrieveAlbum
 	{
-		public Album GetById(int input)
+		public static Album GetById(int input)
 		{
 			using (var db = new BazaContext())
 			{
@@ -36,7 +35,7 @@ namespace Persistence.RepTools.Retrieve
 			}
 		}
 
-		public Album AlbumWithoutFonogram(int input)
+		public static Album AlbumWithoutFonogram(int input)
 		{
 			using (var db = new BazaContext())
 			{

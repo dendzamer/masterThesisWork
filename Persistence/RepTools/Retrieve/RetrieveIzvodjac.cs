@@ -8,7 +8,7 @@ namespace Persistence.RepTools.Retrieve
 {
 	public class RetrieveIzvodjac
 	{
-		public Izvodjac GetById(int input)
+		public static Izvodjac GetById(int input)
 		{
 			using (var db = new BazaContext())
 			{
@@ -21,7 +21,7 @@ namespace Persistence.RepTools.Retrieve
 			}
 		}
 
-		public Izvodjac IzvodjacWithoutFonogram(int input)
+		public static Izvodjac IzvodjacWithoutFonogram(int input)
 		{
 			using (var db = new BazaContext())
 			{

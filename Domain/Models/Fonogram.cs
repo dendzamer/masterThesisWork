@@ -11,6 +11,7 @@ namespace Domain.Models
 		public List<Izvodjac> Izvodjaci {get; set;}
 		public int GodinaIzdanja {get; set;}
 		public string KataloskiBroj {get; set;}
+		public string AlbumNaziv {get; set;}
 
 		public Fonogram()
 		{

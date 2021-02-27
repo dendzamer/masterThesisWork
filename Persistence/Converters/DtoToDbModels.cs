@@ -8,7 +8,7 @@ namespace Persistence.Converters
 {
 	public class DtoToDbModels
 	{
-		public Album ConvertToAlbum(IAlbumDTO input)
+		public static Album ConvertToAlbum(IAlbumDTO input)
 		{
 			Album album = new Album();
 			album.AlbumId = input.Id;
@@ -19,7 +19,7 @@ namespace Persistence.Converters
 			return album;
 		}
 
-		public Izvodjac ConvertToIzvodjac(IDTO input)
+		public static Izvodjac ConvertToIzvodjac(IDTO input)
 		{
 			Izvodjac izvodjac = new Izvodjac();
 			izvodjac.IzvodjacId = input.Id;
@@ -28,7 +28,7 @@ namespace Persistence.Converters
 			return izvodjac;
 		}
 
-		public Fonogram ConvertToFonogram(IFonogramDTO input)
+		public static Fonogram ConvertToFonogram(IFonogramDTO input)
 		{
 			Fonogram fonogram = new Fonogram();
 			fonogram.FonogramId = input.Id;
@@ -40,10 +40,7 @@ namespace Persistence.Converters
 
 			foreach (int izvodjacId in input.IzvodjacId)
 				{
-					RetrieveIzvodjac _retrieve = new RetrieveIzvodjac();
-					Izvodjac izvodjac = _retrieve.IzvodjacWithoutFonogram(izvodjacId);
-
-					//Izvodjac izvodjac = new Izvodjac(){IzvodjacId = izvodjacId};
+					Izvodjac izvodjac = RetrieveIzvodjac.IzvodjacWithoutFonogram(izvodjacId);
 
 					fonogram.Izvodjaci.Add(izvodjac);
 				}
