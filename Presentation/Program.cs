@@ -14,7 +14,7 @@ namespace Presentation
 		
 		//CreateAlbum();
 		//CreateIzvodjac("Neki John");
-		CreateFonogram("Bas super pesma");
+		//CreateFonogram("Bas super pesma");
 		//ReadAlbum();
 		//ReadIzvodjac();
 		//ReadFonogram();
@@ -22,9 +22,30 @@ namespace Presentation
 		//UpdateFonogram("Four");
 		//UpdateIzvodjac("Charles Darwin");
 		//UpdateAlbum();
+		//
+
+		TestNulls();
 		
 
         }
+
+	static public void TestNulls()
+	{
+		IAlbumDTO album = new AlbumDTO();
+
+		if (album.Id == null)
+			{
+				Console.WriteLine("Id je null");
+			}
+		else Console.WriteLine(album.Id);
+
+
+
+		if (album.Naziv == null)
+			{
+				Console.WriteLine("Naziv je null");
+			}
+	}
 
 
 	static public void UpdateAlbum()
