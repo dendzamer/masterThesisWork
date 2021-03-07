@@ -27,6 +27,20 @@ namespace DataInjector
 			return repUpdater;
 		}
 
+		public static RepSearcher GetRepSearcher()
+		{
+			RepSearcher repSearcher = new RepSearcher();
+
+			return repSearcher;
+		}
+
+		public static RepAll GetRepAll()
+		{
+			RepAll repAll = new RepAll();
+
+			return repAll;
+		}
+
 
 	}
 }

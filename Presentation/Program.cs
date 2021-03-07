@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using DataInjector;
 using Domain.DTOs;
 using Domain.Interfaces;
@@ -22,31 +23,163 @@ namespace Presentation
 		//UpdateFonogram("Four");
 		//UpdateIzvodjac("Charles Darwin");
 		//UpdateAlbum();
-		//
 
-		TestNulls();
-		
+		//SearchAlbum();
+		//SearchFonogram();
+		//SearchIzvodjac();
 
+		//GetAlbumi();
+		//GetFonogrami();
+		GetIzvodjaci();
         }
 
-	static public void TestNulls()
+	static public void GetIzvodjaci()
 	{
-		IAlbumDTO album = new AlbumDTO();
+		InjectSRU inject = new InjectSRU();
+		List<IViewModel> listFromInject = inject.GetAll(2);
 
-		if (album.Id == null)
-			{
-				Console.WriteLine("Id je null");
-			}
-		else Console.WriteLine(album.Id);
+		string result = "";
 
+		List<IIzvodjacViewModel> izvodjacView = new List<IIzvodjacViewModel>();
+		foreach (var element in listFromInject)
+		{
+			izvodjacView.Add(element as IIzvodjacViewModel);
 
+		}
 
-		if (album.Naziv == null)
-			{
-				Console.WriteLine("Naziv je null");
-			}
+		foreach (var element in izvodjacView)
+		{
+			result += $"\n{element.Id}\n{element.Naziv}\n{element.Fonogrami}";
+		}
+
+		Console.WriteLine(result);
+	}
+	static public void GetFonogrami()
+	{
+		InjectSRU inject = new InjectSRU();
+		List<IViewModel> listFromInject = inject.GetAll(1);
+
+		string result = "";
+
+		List<IFonogramViewModel> fonogramView = new List<IFonogramViewModel>();
+		foreach (var element in listFromInject)
+		{
+
+			fonogramView.Add(element as IFonogramViewModel);
+		}
+
+		foreach (var element in fonogramView)
+		{
+
+			result += $"\n{element.Id}\n{element.Naziv}\n{element.KataloskiBroj}\n{element.GodinaIzdanja}\n{element.Izvodjaci}\n";
+		}
+
+		Console.WriteLine(result);
+		
+	}
+	static public void GetAlbumi()
+	{
+		InjectSRU inject = new InjectSRU();
+		List<IViewModel> listFromInject = inject.GetAll(0);
+
+		string result = "";
+
+		List<IAlbumViewModel> albumView = new List<IAlbumViewModel>();
+		foreach (var element in listFromInject)
+		{
+			albumView.Add(element as IAlbumViewModel);
+		}
+
+		foreach (var element in albumView)
+		{
+
+			result += $"\n{element.Id}\n{element.Naziv}\n{element.Izvodjaci}\n{element.GodinaIzdanja}\n{element.KataloskiBroj}\n{element.Fonogrami}";
+
+		}
+
+		Console.WriteLine(result);
 	}
 
+	static public void SearchIzvodjac()
+	{
+		InjectSRU inject = new InjectSRU();
+		IDTO izvodjac = new IzvodjacDTO();
+
+		izvodjac.Naziv = "izvodjac";
+
+		string result = "";
+
+		List<IViewModel> listFromInject = inject.SearchData(izvodjac);
+		List<IIzvodjacViewModel> izvodjacView = new List<IIzvodjacViewModel>();
+		foreach (var element in listFromInject)
+		{
+			izvodjacView.Add(element as IIzvodjacViewModel);
+
+		}
+
+		foreach (var element in izvodjacView)
+		{
+			result += $"\n{element.Id}\n{element.Naziv}\n{element.Fonogrami}";
+		}
+
+		Console.WriteLine(result);
+
+
+	}
+	static public void SearchFonogram()
+	{
+		InjectSRU inject = new InjectSRU();
+		IFonogramDTO fonogram = new FonogramDTO();
+
+		fonogram.KataloskiBroj = "088";
+
+		string result = "";
+
+		List<IViewModel> listFromInject = inject.SearchData(fonogram);
+		List<IFonogramViewModel> fonogramView = new List<IFonogramViewModel>();
+		foreach (var element in listFromInject)
+		{
+
+			fonogramView.Add(element as IFonogramViewModel);
+		}
+
+		foreach (var element in fonogramView)
+		{
+
+			result += $"\n{element.Id}\n{element.Naziv}\n{element.KataloskiBroj}\n{element.GodinaIzdanja}\n{element.Izvodjaci}\n";
+		}
+
+		Console.WriteLine(result);
+
+		
+	}
+	static public void SearchAlbum()
+	{
+		InjectSRU inject = new InjectSRU();
+
+		IAlbumDTO album = new AlbumDTO();
+
+		album.GodinaIzdanja = 2019;
+
+		string result = "";
+
+		List<IViewModel> listFromInject = inject.SearchData(album);
+		List<IAlbumViewModel> albumView = new List<IAlbumViewModel>();
+		foreach (var element in listFromInject)
+		{
+			albumView.Add(element as IAlbumViewModel);
+		}
+
+		foreach (var element in albumView)
+		{
+
+			result += $"\n{element.Id}\n{element.Naziv}\n{element.Izvodjaci}\n{element.GodinaIzdanja}\n{element.KataloskiBroj}\n{element.Fonogrami}";
+
+		}
+
+		Console.WriteLine(result);
+
+	}
 
 	static public void UpdateAlbum()
 	{
@@ -154,7 +287,7 @@ namespace Presentation
 		InjectSRU inject = new InjectSRU();
 
 		IAlbumDTO album = new AlbumDTO();
-		album.Id = 1;
+		album.Id = 2;
 
 		IAlbumViewModel albumView = inject.ReadData(album) as AlbumViewModel;
 

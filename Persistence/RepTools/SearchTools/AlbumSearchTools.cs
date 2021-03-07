@@ -13,8 +13,7 @@ namespace Persistence.RepTools.SearchTools
 		{
 			using (var db = new BazaContext())
 			{
-				IQueryable<Album> albumi = db.Albumi.Include(p => p.Fonogrami);
-
+				IQueryable<Album> albumi = db.Albumi;
 				List<Album> filtriraniAlbumi = albumi.Where(p => p.Naziv.Contains(input)).ToList();
 
 				List<IDb> finalAlbumi = new List<IDb>();

@@ -2,7 +2,6 @@ using System;
 using Domain.DTOs;
 using Domain.Facade;
 using Domain.Interfaces;
-using Persistence;
 
 namespace DataInjector
 {
@@ -35,7 +34,6 @@ namespace DataInjector
 			{
 				_resultViewModel = _localService.Izvodjac(myDto);
 			}
-
 		}
 
 		public IViewModel GetViewModel()
