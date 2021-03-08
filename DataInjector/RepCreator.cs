@@ -41,6 +41,13 @@ namespace DataInjector
 			return repAll;
 		}
 
+		public static RepDeleter GetRepDeleter()
+		{
+			RepDeleter repDeleter = new RepDeleter();
+
+			return repDeleter;
+		}
+
 
 	}
 }

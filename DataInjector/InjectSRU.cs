@@ -41,6 +41,15 @@ namespace DataInjector
 			return _sru.GetViewModel();
 		}
 
+		public IViewModel DeleteData(IDTO inputDto)
+		{
+			_myRepository = RepCreator.GetRepDeleter();
+			
+			_sru = new SaveReadUpdate(inputDto, _myRepository);
+
+			return _sru.GetViewModel();
+		}
+
 		public List<IViewModel> SearchData(IDTO inputDto)
 		{
 			_mySearchRepository = RepCreator.GetRepSearcher();

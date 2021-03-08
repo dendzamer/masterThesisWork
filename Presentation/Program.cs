@@ -30,8 +30,52 @@ namespace Presentation
 
 		//GetAlbumi();
 		//GetFonogrami();
-		GetIzvodjaci();
+		//GetIzvodjaci();
+
+		//DeleteAlbum();
+		//DeleteFonogram();
+		//DeleteIzvodjac();
         }
+
+	static public void DeleteIzvodjac()
+	{
+		InjectSRU inject = new InjectSRU();
+		IDTO izvodjac = new IzvodjacDTO();
+
+		izvodjac.Id = 8;
+		
+		IIzvodjacViewModel izvodjacView = inject.DeleteData(izvodjac) as IzvodjacViewModel;
+		string result = $"izbrisan je sledeci izvodjac: \n{izvodjacView.Id}\n{izvodjacView.Naziv}\n{izvodjacView.Fonogrami}";
+		Console.WriteLine(result);
+	}
+
+	static public void DeleteFonogram()
+	{
+		InjectSRU inject = new InjectSRU();
+		IFonogramDTO fonogram = new FonogramDTO();
+		
+		fonogram.Id = 13;
+	
+		IFonogramViewModel fonogramView = inject.DeleteData(fonogram) as FonogramViewModel;
+		string result = $"izbrisan je sledeci fonogram: \n{fonogramView.Id}\n{fonogramView.Naziv}\n{fonogramView.KataloskiBroj}\n{fonogramView.GodinaIzdanja}\n{fonogramView.Izvodjaci}\n";
+
+		Console.WriteLine(result);
+
+
+	}
+	static public void DeleteAlbum()
+	{
+		InjectSRU inject = new InjectSRU();
+		List<IViewModel> listFromInject = inject.GetAll(2);
+
+		IAlbumDTO album = new AlbumDTO();
+		album.Id = 2;
+
+		IAlbumViewModel albumView = inject.DeleteData(album) as AlbumViewModel;
+
+		string result = $"Izbrisan je sledeci album: \n{albumView.Id}\n{albumView.Naziv}\n{albumView.Izvodjaci}\n{albumView.GodinaIzdanja}\n{albumView.KataloskiBroj}\n{albumView.Fonogrami}";
+		Console.WriteLine(result);
+	}
 
 	static public void GetIzvodjaci()
 	{
@@ -311,7 +355,7 @@ namespace Presentation
 	{
 		InjectSRU inject = new InjectSRU();
 		IFonogramDTO fonogram = new FonogramDTO();
-		fonogram.Id = 13;
+		fonogram.Id = 3;
 
 		IFonogramViewModel fonogramView = inject.ReadData(fonogram) as FonogramViewModel;
 
