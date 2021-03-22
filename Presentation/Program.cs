@@ -4,6 +4,7 @@ using DataInjector;
 using Domain.DTOs;
 using Domain.Interfaces;
 using Domain.ViewModels;
+using Presentation.Create;
 
 namespace Presentation
 {
@@ -11,6 +12,14 @@ namespace Presentation
     {
         static void Main(string[] args)
         {
+		CreateAlbum create = new CreateAlbum();
+		create.PopulateEntries();
+
+		AlbumDTO album = create.Album;
+
+
+		Console.WriteLine($"\nNaziv: {album.Naziv}\nKataloskiBroj: {album.KataloskiBroj}\nGodina Izdanja: {album.GodinaIzdanja}");
+		Console.ReadLine();
 		//!!!!!!!!!!!!!!!!!!!! Napraviti Albumi u IzvodjacViewModelu!! i sve sto treba propratno za to!!!
 		
 		//CreateAlbum();
