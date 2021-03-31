@@ -5,27 +5,27 @@ using Create.Enums;
 
 namespace Presentation.Create
 {
-	public class CreateAlbum
+	public class CreateFonogram
 	{
-		public AlbumDTO Album {get;}
+		public FonogramDTO Fonogram {get;}
 		private bool _doneBool = false;
 		private bool _finishedBool = true;
-		private AlbumEnum _izbor;
+		private FonogramEnum _izbor;
 
-		public CreateAlbum()
+		public CreateFonogram()
 		{
-			Album = new AlbumDTO();
+			Fonogram = new FonogramDTO();
 		}
 
 		public bool PopulateEntries()
 		{
 			_finishedBool = true;
+
 			Console.Clear();
 			do
 			{
 				Console.WriteLine("-------------------------------------------------------------------------------------------");
-				//Ispisati sve opcije
-				Console.WriteLine(Options.Album());
+				Console.WriteLine(Options.Fonogram());
 
 				string myOption = Console.ReadLine().ToLower().Replace(" ","");
 
@@ -51,23 +51,26 @@ namespace Presentation.Create
 			return _finishedBool;
 		}
 
-		private void callSwitch(AlbumEnum input)
+		private void callSwitch(FonogramEnum input)
 		{
 			switch(input)
 			{
-				case AlbumEnum.naziv:
+				case FonogramEnum.naziv:
 					fillNaziv();
 					break;
-				case AlbumEnum.kataloskibroj:
+				case FonogramEnum.kataloskibroj:
 					fillKataloskiBroj();
 					break;
-				case AlbumEnum.godinaizdanja:
+				case FonogramEnum.godinaizdanja:
 					fillGodinaIzdanja();
 					break;
-				case AlbumEnum.zavrsi:
+				case FonogramEnum.izvodjaci:
+					fillIzvodjaci();
+					break;
+				case FonogramEnum.zavrsi:
 					_doneBool = true;
 					break;
-				case AlbumEnum.napusti:
+				case FonogramEnum.napusti:
 					_finishedBool = false;
 					_doneBool = true;
 					break;
@@ -78,11 +81,11 @@ namespace Presentation.Create
 			}
 		}
 
-		private void fillNaziv()
+		public void fillNaziv()
 		{
 			Console.Clear();
 			Console.WriteLine("(Za povratak na prethodni meni ukucajte znak * i pritisnite Enter)");
-			Console.WriteLine("Ukucajte naziv albuma i pritisnite Enter:");
+			Console.WriteLine("Ukucajte naziv fonograma i pritisnite Enter:");
 
 			string naziv = Console.ReadLine();
 
@@ -92,16 +95,16 @@ namespace Presentation.Create
 			}
 			else
 			{
-				Album.Naziv = naziv;
+				Fonogram.Naziv = naziv;
 			}
 			Console.Clear();
 		}
-
-		private void fillKataloskiBroj()
+		
+		public void fillKataloskiBroj()
 		{
 			Console.Clear();
 			Console.WriteLine("(Za povratak na prethodni meni ukucajte znak * i pritisnite Enter)");
-			Console.WriteLine("Ukucajte kataloski broj albuma i pritisnite Enter:");
+			Console.WriteLine("Ukucajte kataloski broj fonograma i pritisnite Enter:");
 
 			string kataloskiBroj = Console.ReadLine();
 
@@ -111,20 +114,20 @@ namespace Presentation.Create
 			}
 			else
 			{
-				Album.KataloskiBroj = kataloskiBroj;
+				Fonogram.KataloskiBroj = kataloskiBroj;
 			}
 			Console.Clear();
 		}
 
-		private void fillGodinaIzdanja()
+		public void fillGodinaIzdanja()
 		{
 			Console.Clear();
 			Console.WriteLine("(Za povratak na prethodni meni ukucajte znak * i pritisnite Enter)");
-			Console.WriteLine("Ukucajte godinu izdanja albuma i pritisnite Enter:");
+			Console.WriteLine("Ukucajte godinu izdanja fonograma i pritisnite Enter:");
 
 			string godina = Console.ReadLine();
 
-			if (godina == "*")
+			if (godina == "")
 			{
 				return;
 			}
@@ -133,33 +136,48 @@ namespace Presentation.Create
 			{
 				int godinaIzdanja = 0;
 				int.TryParse(godina, out godinaIzdanja);
-				Album.GodinaIzdanja = godinaIzdanja;
+				Fonogram.GodinaIzdanja = godinaIzdanja;
 			}
 			Console.Clear();
 		}
 
+		public void fillIzvodjaci()
+		{
+
+
+		}
+
 		private bool CheckValidity()
 		{
-			if(Album.Naziv == null || Album.Naziv == "")
+			if (Fonogram.Naziv == null || Fonogram.Naziv == "")
 			{
 				Console.Clear();
-				Console.WriteLine("Popunite naziv albuma!");
+				Console.WriteLine("Popunite naziv fonograma!");
 				return false;
 			}
 
-			else if(Album.KataloskiBroj == null || Album.KataloskiBroj == "")
+			else if (Fonogram.KataloskiBroj == null || Fonogram.KataloskiBroj == "")
 			{
 				Console.Clear();
 				Console.WriteLine("Popunite kataloski broj!");
 				return false;
 			}
 
-			else if (Album.GodinaIzdanja == 0)
+			else if (Fonogram.GodinaIzdanja == 0)
 			{
 				Console.Clear();
 				Console.WriteLine("Popunite godinu izdanja albuma! Ne moze ostati nula!");
 				return false;
 			}
+
+			/*
+			else if (Fonogram.Izvodjaci.Any() == false)
+			{
+				Console.Clear();
+				Console.WriteLine("Unesite barem jednog izvodjaca!");
+				return false;
+			}
+			*/
 
 			else
 			{
@@ -167,5 +185,7 @@ namespace Presentation.Create
 				return true;
 			}
 		}
+
+
 	}
 }
