@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Domain.DTOs;
 using Create.Enums;
+using System.Linq;
 
 namespace Presentation.Create
 {
@@ -11,19 +12,27 @@ namespace Presentation.Create
 		private bool _doneBool = false;
 		private bool _finishedBool = true;
 		private FonogramEnum _izbor;
+		private AddIzvodjac _addIzvodjac;
+
+		private Dictionary<int, string> _fullIzvodjaci;
 
 		public CreateFonogram()
 		{
 			Fonogram = new FonogramDTO();
+			_fullIzvodjaci = new Dictionary<int, string>();
+			_addIzvodjac = new AddIzvodjac();
 		}
 
 		public bool PopulateEntries()
 		{
 			_finishedBool = true;
+			_doneBool = false;
 
 			Console.Clear();
 			do
 			{
+				Console.WriteLine("-------------------------------------------------------------------------------------------");
+				Stats.FonogramStats(Fonogram, _fullIzvodjaci);
 				Console.WriteLine("-------------------------------------------------------------------------------------------");
 				Console.WriteLine(Options.Fonogram());
 
@@ -143,8 +152,10 @@ namespace Presentation.Create
 
 		public void fillIzvodjaci()
 		{
-
-
+			_addIzvodjac.ChooseOptions();
+			Fonogram.IzvodjacId = _addIzvodjac.IzvodjaciId;
+			_fullIzvodjaci = _addIzvodjac.IdName;
+			Console.Clear();
 		}
 
 		private bool CheckValidity()
@@ -170,14 +181,13 @@ namespace Presentation.Create
 				return false;
 			}
 
-			/*
-			else if (Fonogram.Izvodjaci.Any() == false)
+			
+			else if (Fonogram.IzvodjacId.Any() == false)
 			{
 				Console.Clear();
 				Console.WriteLine("Unesite barem jednog izvodjaca!");
 				return false;
 			}
-			*/
 
 			else
 			{

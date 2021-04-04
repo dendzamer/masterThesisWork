@@ -14,9 +14,19 @@ namespace Persistence.RepTools.Retrieve
 			{
 				IQueryable<Izvodjac> izvodjaci = db.Izvodjaci.Include(p => p.Fonogrami);
 
-				Izvodjac izvodjac = izvodjaci.Single(p => p.IzvodjacId == input);
-				db.SaveChanges();
-				
+				Izvodjac izvodjac;
+
+				try 
+				{
+					izvodjac = izvodjaci.Single(p => p.IzvodjacId == input);
+					db.SaveChanges();
+				}
+
+				catch (Exception ex)
+				{
+					throw new Exception("Ne postoji unos sa tim ID brojem!", ex);
+				}
+
 				return izvodjac;
 			}
 		}
@@ -27,8 +37,18 @@ namespace Persistence.RepTools.Retrieve
 			{
 				IQueryable<Izvodjac> izvodjaci = db.Izvodjaci;
 
-				Izvodjac izvodjac = izvodjaci.Single(p => p.IzvodjacId == input);
-				db.SaveChanges();
+				Izvodjac izvodjac;
+
+				try 
+				{
+					izvodjac = izvodjaci.Single(p => p.IzvodjacId == input);
+					db.SaveChanges();
+				}
+
+				catch (Exception ex)
+				{
+					throw new Exception("Ne postoji unos sa tim ID brojem!", ex);
+				}				
 
 				return izvodjac;
 			}

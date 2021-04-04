@@ -20,11 +20,14 @@ namespace Presentation.Create
 		public bool PopulateEntries()
 		{
 			_finishedBool = true;
+			_doneBool = false;
 
 			Console.Clear();
 			do
 			{
+				Stats.IzvodjacStats(Izvodjac);
 				Console.WriteLine("-------------------------------------------------------------------------------------------");
+
 				Console.WriteLine(Options.Izvodjac());
 
 				string myOption = Console.ReadLine().ToLower().Replace(" ", "");
@@ -75,6 +78,8 @@ namespace Presentation.Create
 		private void fillNaziv()
 		{
 			Console.Clear();
+			Stats.IzvodjacStats(Izvodjac);
+			Console.WriteLine("-------------------------------------------------------------------------------------------");
 			Console.WriteLine("(Za povratak na prethodni meni ukucajte znak * i pritisnite Enter)");
 			Console.WriteLine("Ukucajte naziv album i pritisnite Enter:");
 

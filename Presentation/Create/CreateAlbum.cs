@@ -20,9 +20,12 @@ namespace Presentation.Create
 		public bool PopulateEntries()
 		{
 			_finishedBool = true;
+			_doneBool = false;
+
 			Console.Clear();
 			do
 			{
+				Stats.AlbumStats(Album);
 				Console.WriteLine("-------------------------------------------------------------------------------------------");
 				//Ispisati sve opcije
 				Console.WriteLine(Options.Album());
@@ -81,6 +84,10 @@ namespace Presentation.Create
 		private void fillNaziv()
 		{
 			Console.Clear();
+			Stats.AlbumStats(Album);
+
+			Console.WriteLine("-------------------------------------------------------------------------------------------");
+
 			Console.WriteLine("(Za povratak na prethodni meni ukucajte znak * i pritisnite Enter)");
 			Console.WriteLine("Ukucajte naziv albuma i pritisnite Enter:");
 
@@ -100,6 +107,8 @@ namespace Presentation.Create
 		private void fillKataloskiBroj()
 		{
 			Console.Clear();
+			Stats.AlbumStats(Album);
+			Console.WriteLine("-------------------------------------------------------------------------------------------");
 			Console.WriteLine("(Za povratak na prethodni meni ukucajte znak * i pritisnite Enter)");
 			Console.WriteLine("Ukucajte kataloski broj albuma i pritisnite Enter:");
 
@@ -119,6 +128,8 @@ namespace Presentation.Create
 		private void fillGodinaIzdanja()
 		{
 			Console.Clear();
+			Stats.AlbumStats(Album);
+			Console.WriteLine("-------------------------------------------------------------------------------------------");
 			Console.WriteLine("(Za povratak na prethodni meni ukucajte znak * i pritisnite Enter)");
 			Console.WriteLine("Ukucajte godinu izdanja albuma i pritisnite Enter:");
 
@@ -132,8 +143,12 @@ namespace Presentation.Create
 			else
 			{
 				int godinaIzdanja = 0;
-				int.TryParse(godina, out godinaIzdanja);
-				Album.GodinaIzdanja = godinaIzdanja;
+				if (int.TryParse(godina, out godinaIzdanja) == false)
+				{
+					Console.WriteLine("Neispravan unos! Pritisnite Enter za povratak.");
+					Console.ReadLine();
+				}
+					Album.GodinaIzdanja = godinaIzdanja;
 			}
 			Console.Clear();
 		}

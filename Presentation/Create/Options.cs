@@ -38,5 +38,16 @@ namespace Presentation.Create
 
 			return opcije;
 		}
+
+		public static string AddIzvodjac()
+		{
+			string opcije = "\nOdaberite jednu opciju: "
+				+ "\n1) Da dodate izvodjaca ukucajte broj 1 ili rec \'dodaj\' i pritisnite Enter, "
+				+ "\n2) Da pretrazite izvodjace kucajte broj 2 ili rec \'pretrazi\' i pritisnite Enter, "
+				+ "\n3) Da izbrisete izvodjace ukucajte broj 3 ili rec \'izbrisi\' i pritisnite Enter, "
+				+ "\n4) Da zavrsite i potvrdite sve unose ukucajte broj 4 ili rec \'zavrsi\' i pritisnite Enter, ";
+
+			return opcije;
+		}
 	}
 }

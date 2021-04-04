@@ -14,7 +14,17 @@ namespace Persistence.RepTools.Retrieve
 			{
 				IQueryable<Fonogram> fonogrami = db.Fonogrami.Include(p => p.Izvodjaci);
 
-				Fonogram fonogram = fonogrami.Single(p => p.FonogramId == input);
+				Fonogram fonogram;
+
+				try 
+				{
+					fonogram = fonogrami.Single(p => p.FonogramId == input);
+				}
+
+				catch (Exception ex)
+				{
+					throw new Exception("Ne postoji unos sa tim ID brojem!", ex);
+				}
 
 				return fonogram;
 			}

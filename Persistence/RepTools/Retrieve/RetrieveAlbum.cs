@@ -16,7 +16,17 @@ namespace Persistence.RepTools.Retrieve
 				IQueryable<Album> albumi = db.Albumi;
 				IQueryable<Fonogram> fonogrami = db.Fonogrami.Include(p => p.Izvodjaci);
 
-				Album album = albumi.Single(p => p.AlbumId == input);
+				Album album;
+
+				try 
+				{
+					album = albumi.Single(p => p.AlbumId == input);
+				}
+
+				catch (Exception ex)
+				{
+					throw new Exception("Ne postoji unos sa tim ID brojem!", ex);
+				}
 
 
 				//Nakon ovoga sto sledi Entityframework je sam uspeo da skapira koji fonogram pripada ovom albumu. Navodno je bilo dovoljno samo da filtriram 'fonogrami' query i uspeo je sam da poveze. Mislim da se ovo zove Lazy loading ali nisam jos sasvim siguran.
@@ -39,7 +49,16 @@ namespace Persistence.RepTools.Retrieve
 		{
 			using (var db = new BazaContext())
 			{
-				Album album = db.Albumi.Single(p => p.AlbumId == input);
+				Album album;
+				try 
+				{
+					album = db.Albumi.Single(p => p.AlbumId == input);
+				}
+
+				catch (Exception ex)
+				{
+					throw new Exception("Ne postoji unos sa tim ID brojem!", ex);
+				}
 
 				return album;
 			}
