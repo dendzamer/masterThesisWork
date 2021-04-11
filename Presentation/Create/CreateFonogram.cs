@@ -13,6 +13,7 @@ namespace Presentation.Create
 		private bool _finishedBool = true;
 		private FonogramEnum _izbor;
 		private AddIzvodjac _addIzvodjac;
+		private string albumNaziv;
 
 		private Dictionary<int, string> _fullIzvodjaci;
 
@@ -21,6 +22,7 @@ namespace Presentation.Create
 			Fonogram = new FonogramDTO();
 			_fullIzvodjaci = new Dictionary<int, string>();
 			_addIzvodjac = new AddIzvodjac();
+			albumNaziv = "";
 		}
 
 		public bool PopulateEntries()
@@ -32,7 +34,7 @@ namespace Presentation.Create
 			do
 			{
 				Console.WriteLine("-------------------------------------------------------------------------------------------");
-				Stats.FonogramStats(Fonogram, _fullIzvodjaci);
+				Stats.FonogramStats(Fonogram, _fullIzvodjaci, albumNaziv);
 				Console.WriteLine("-------------------------------------------------------------------------------------------");
 				Console.WriteLine(Options.Fonogram());
 
@@ -75,6 +77,9 @@ namespace Presentation.Create
 					break;
 				case FonogramEnum.izvodjaci:
 					fillIzvodjaci();
+					break;
+				case FonogramEnum.album:
+					fillAlbum();
 					break;
 				case FonogramEnum.zavrsi:
 					_doneBool = true;
@@ -158,6 +163,12 @@ namespace Presentation.Create
 			Console.Clear();
 		}
 
+		public void fillAlbum()
+		{
+
+
+		}
+
 		private bool CheckValidity()
 		{
 			if (Fonogram.Naziv == null || Fonogram.Naziv == "")
@@ -186,6 +197,13 @@ namespace Presentation.Create
 			{
 				Console.Clear();
 				Console.WriteLine("Unesite barem jednog izvodjaca!");
+				return false;
+			}
+
+			else if (Fonogram.AlbumId == 0)
+			{
+				Console.Clear();
+				Console.WriteLine("Unesite Id broj albuma u koji dodajete fonogram!");
 				return false;
 			}
 

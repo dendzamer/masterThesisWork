@@ -8,7 +8,8 @@ namespace Create.Enums
 		kataloskibroj = 2,
 		godinaizdanja = 3,
 		izvodjaci = 4,
-		zavrsi = 5,
-		napusti = 6
+		album = 5,
+		zavrsi = 6,
+		napusti = 7
 	}
 }

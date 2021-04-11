@@ -13,11 +13,12 @@ namespace Presentation.Create
 			Console.WriteLine("Godina izdanja: {0}", input.GodinaIzdanja);
 		}
 
-		static public void FonogramStats(FonogramDTO input, Dictionary<int, string> izvodjaci)
+		static public void FonogramStats(FonogramDTO input, Dictionary<int, string> izvodjaci, string nazivAlbuma)
 		{
 			Console.WriteLine("Naziv: {0}", input.Naziv);
 			Console.WriteLine("Kataloski broj: {0}", input.KataloskiBroj);
 			Console.WriteLine("Godina izdanja: {0}", input.GodinaIzdanja);
+			Console.WriteLine("Album Id: {0} Naziv albuma: {1}", input.AlbumId, nazivAlbuma);
 			Console.WriteLine("Trenutno uneti izvodjaci: \n");
 
 			foreach (var izvodjac in izvodjaci)

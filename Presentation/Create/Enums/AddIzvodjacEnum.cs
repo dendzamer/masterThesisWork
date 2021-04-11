@@ -2,11 +2,12 @@ using System;
 
 namespace Create.Enums
 {
-	public enum AddEnum
+	public enum AddIzvodjacEnum
 	{
 		dodaj = 1,
 		pretrazi = 2,
-		izbrisi = 3,
-		zavrsi = 4
+		kreiraj = 3,
+		izbrisi = 4,
+		zavrsi = 5
 	}
 }

@@ -13,7 +13,7 @@ namespace Presentation.Create
 		public Dictionary<int, string> IdName{get;}
 		public List<int> IzvodjaciId {get;}
 		private bool _doneBool = false;
-		private AddEnum _izbor;
+		private AddIzvodjacEnum _izbor;
 		private ReadOneInstance _read;
 
 		public AddIzvodjac()
@@ -53,20 +53,23 @@ namespace Presentation.Create
 			while (_doneBool == false);
 		}
 
-		private void callSwitch(AddEnum input)
+		private void callSwitch(AddIzvodjacEnum input)
 		{
 			switch(input)
 			{
-				case AddEnum.dodaj:
+				case AddIzvodjacEnum.dodaj:
 					dodajIzvodjaca();
 					break;
-				case AddEnum.pretrazi:
+				case AddIzvodjacEnum.pretrazi:
 					pretraziIzvodjaca();
 					break;
-				case AddEnum.izbrisi:
+				case AddIzvodjacEnum.kreiraj:
+					kreirajIzvodjaca();
+					break;
+				case AddIzvodjacEnum.izbrisi:
 					izbrisiIzvodjaca();
 					break;
-				case AddEnum.zavrsi:
+				case AddIzvodjacEnum.zavrsi:
 					_doneBool = true;
 					break;
 				default:
@@ -89,6 +92,7 @@ namespace Presentation.Create
 
 			if (unos == "*")
 			{
+				Console.Clear();
 				return;
 			}
 
@@ -133,6 +137,11 @@ namespace Presentation.Create
 			}
 		}
 
+		private void kreirajIzvodjaca()
+		{
+
+		}
+
 		private void pretraziIzvodjaca()
 		{
 
@@ -140,7 +149,44 @@ namespace Presentation.Create
 
 		private void izbrisiIzvodjaca()
 		{
+			while (true)
+			{
+				Console.Clear();
+				Console.WriteLine("-------------------------------------------------------------------------------------------");
+				Stats.AddIzvodjacStats(IdName);
+				Console.WriteLine("-------------------------------------------------------------------------------------------");
+				Console.WriteLine("Unesite Id broj izvodjaca kog zelite da izbrisete sa liste i pritisnite Enter.\nZa povratak na prethodni meni ukucajte znak \'*\' i pritisnite Enter.");
 
+				string unos = Console.ReadLine().ToLower().Replace(" ","");
+
+				int myId = 0;
+				if (unos == "*")
+				{
+					Console.Clear();
+					return;
+				}
+
+				if (int.TryParse(unos, out myId))
+				{
+					if (IzvodjaciId.Any(p => p == myId))
+					{
+						IzvodjaciId.Remove(myId);
+						IdName.Remove(myId);
+					}
+					else
+					{
+						Console.Clear();
+						Console.WriteLine("Na listi nema izvodjaca sa tim Id brojem! Pritisnite Enter da pokusate ponovo!");
+						Console.ReadLine();
+					}
+				}
+				else
+				{
+					Console.Clear();
+					Console.WriteLine("Neispravan unos! Pritisnite Enter da pokusate ponovo.");
+					Console.ReadLine();
+				}
+			}
 		}
 	}
 }
