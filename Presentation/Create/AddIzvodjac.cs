@@ -87,7 +87,7 @@ namespace Presentation.Create
 			Console.WriteLine("-------------------------------------------------------------------------------------------");
 
 			Console.WriteLine("Ukucajte ID broj izvodjaca:");
-			Console.WriteLine("Za povratak na prethodni meni ukucajte znak \'*\'.");
+			Console.WriteLine("Za povratak na prethodni meni ukucajte znak \'*\' i pritisnite Enter.");
 			string unos = Console.ReadLine().ToLower().Replace(" ","");
 
 			if (unos == "*")

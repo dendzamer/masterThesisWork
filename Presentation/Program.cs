@@ -12,10 +12,12 @@ namespace Presentation
     {
         static void Main(string[] args)
         {
+		CreateMenu createMenu = new CreateMenu();
+		createMenu.ChooseOption();
 		/*AddIzvodjac addIz = new AddIzvodjac();
 		addIz.ChooseOptions();
 		*/
-		CreateFonogram create = new CreateFonogram();
+		/*CreateFonogram create = new CreateFonogram();
 		create.PopulateEntries();
 
 		FonogramDTO fonogram = create.Fonogram;
@@ -23,6 +25,8 @@ namespace Presentation
 
 		Console.WriteLine($"\nNaziv: {fonogram.Naziv}\nKataloskiBroj: {fonogram.KataloskiBroj}\nGodina Izdanja: {fonogram.GodinaIzdanja}");
 		Console.ReadLine();
+		*/
+		
 
 		/*CreateIzvodjac create = new CreateIzvodjac();
 		create.PopulateEntries();
@@ -32,7 +36,7 @@ namespace Presentation
 		Console.ReadLine();
 		*/
 
-	/*	CreateAlbum create = new CreateAlbum();
+		/*CreateAlbum create = new CreateAlbum();
 		create.PopulateEntries();
 
 		AlbumDTO album = create.Album;
@@ -41,6 +45,7 @@ namespace Presentation
 		Console.WriteLine($"\nNaziv: {album.Naziv}\nKataloskiBroj: {album.KataloskiBroj}\nGodina Izdanja: {album.GodinaIzdanja}");
 		Console.ReadLine();
 		*/
+		
 		
 
 		//!!!!!!!!!!!!!!!!!!!! Napraviti Albumi u IzvodjacViewModelu!! i sve sto treba propratno za to!!!

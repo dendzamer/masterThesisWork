@@ -1,19 +1,23 @@
 using System;
 using System.Collections.Generic;
 using Domain.DTOs;
+using Domain.Interfaces;
 using Create.Enums;
 using System.Linq;
+using Presentation.Create.Interfaces;
 
 namespace Presentation.Create
 {
-	public class CreateFonogram
+	public class CreateFonogram : ICreator
 	{
 		public FonogramDTO Fonogram {get;}
 		private bool _doneBool = false;
 		private bool _finishedBool = true;
 		private FonogramEnum _izbor;
 		private AddIzvodjac _addIzvodjac;
+		private AddAlbum _addAlbum;
 		private string albumNaziv;
+
 
 		private Dictionary<int, string> _fullIzvodjaci;
 
@@ -22,6 +26,7 @@ namespace Presentation.Create
 			Fonogram = new FonogramDTO();
 			_fullIzvodjaci = new Dictionary<int, string>();
 			_addIzvodjac = new AddIzvodjac();
+			_addAlbum = new AddAlbum();
 			albumNaziv = "";
 		}
 
@@ -105,6 +110,7 @@ namespace Presentation.Create
 
 			if (naziv == "*")
 			{
+				Console.Clear();
 				return;
 			}
 			else
@@ -124,6 +130,7 @@ namespace Presentation.Create
 
 			if (kataloskiBroj == "*")
 			{
+				Console.Clear();
 				return;
 			}
 			else
@@ -141,8 +148,9 @@ namespace Presentation.Create
 
 			string godina = Console.ReadLine();
 
-			if (godina == "")
+			if (godina == "*")
 			{
+				Console.Clear();
 				return;
 			}
 
@@ -165,8 +173,10 @@ namespace Presentation.Create
 
 		public void fillAlbum()
 		{
-
-
+			_addAlbum.ChooseOptions();
+			Fonogram.AlbumId = _addAlbum.Album.Id;
+			albumNaziv = _addAlbum.Album.Naziv; 
+			Console.Clear();
 		}
 
 		private bool CheckValidity()
@@ -214,6 +224,9 @@ namespace Presentation.Create
 			}
 		}
 
-
+		public IDTO GetDto()
+		{
+			return Fonogram;
+		}
 	}
 }

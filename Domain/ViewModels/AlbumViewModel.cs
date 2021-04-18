@@ -23,7 +23,6 @@ namespace Domain.ViewModels
 			GodinaIzdanja = album.GodinaIzdanja;
 			KataloskiBroj = album.KataloskiBroj;
 			SetFonogrami(album);
-			// ovde konvertovati iz data u ViewModel
 
 		}
 

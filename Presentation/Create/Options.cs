@@ -45,10 +45,30 @@ namespace Presentation.Create
 			string opcije = "\nOdaberite jednu opciju: "
 				+ "\n1) Da dodate izvodjaca ukucajte broj 1 ili rec \'dodaj\' i pritisnite Enter, "
 				+ "\n2) Da pretrazite izvodjace kucajte broj 2 ili rec \'pretrazi\' i pritisnite Enter, "
-				+ "\n3) Da kreirate novog izvodjaca ukucajte broj 3 ili rec \'kreiraj\' i pritisnite Enter, "
+				+ "\n3) Da kreirate i dodate novog izvodjaca ukucajte broj 3 ili rec \'kreiraj\' i pritisnite Enter, "
 				+ "\n4) Da izbrisete izvodjace ukucajte broj 4 ili rec \'izbrisi\' i pritisnite Enter, "
-				+ "\n5) Da zavrsite i potvrdite sve unose ukucajte broj 5 ili rec \'zavrsi\' i pritisnite Enter, ";
+				+ "\n5) Da zavrsite i potvrdite sve unose ukucajte broj 5 ili rec \'zavrsi\' i pritisnite Enter.";
 
+			return opcije;
+		}
+
+		public static string AddAlbum()
+		{
+			string opcije = "\nOdaberite jednu opciju: "
+				+ "\n1) Da dodate album ukucajte broj 1 ili rec \'dodaj\' i pritisnite Enter, "
+				+ "\n2) Da pretrazite albume ukucajte broj 2 ili rec \'pretrazi\' i pritisnite Enter, "
+				+ "\n3) Da kreirate i dodate novi album ukucajte broj 3 ili rec \'kreiraj\' i pritisnite Enter, "
+				+ "\n4) Da zavrsite i potvrdite sve unose ukucajte broj 4 ili rec \'zavrsi\' i pritisnite Enter.";
+			return opcije;
+		}
+
+		public static string MenuOptions()
+		{
+			string opcije = "\nOdaberite jednu opciju: "
+				+ "\n1) Da unesete novi album ukucajte broj 1 ili rec \'album\' i pritisnite Enter, "
+				+ "\n2) Da unesete novi fonogram ukucajte broj 2 ili rec \'fonogram\' i pritisnite Enter, "
+				+ "\n3) Da unesete novog izvodjaca ukucajte broj 3 ili rec \'izvodjac\' i pritisnite Enter, "
+				+ "\n4) Za povratak na prethodni meni ukucajte broj 4 ili rec \'povratak\' i pritisnite Enter.";
 			return opcije;
 		}
 	}

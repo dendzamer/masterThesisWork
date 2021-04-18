@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using Domain.DTOs;
+using Domain.Interfaces;
 using Create.Enums;
+using Presentation.Create.Interfaces;
 
 namespace Presentation.Create
 {
-	public class CreateAlbum
+	public class CreateAlbum : ICreator
 	{
 		public AlbumDTO Album {get;}
 		private bool _doneBool = false;
@@ -25,9 +27,9 @@ namespace Presentation.Create
 			Console.Clear();
 			do
 			{
+				Console.WriteLine("-------------------------------------------------------------------------------------------");
 				Stats.AlbumStats(Album);
 				Console.WriteLine("-------------------------------------------------------------------------------------------");
-				//Ispisati sve opcije
 				Console.WriteLine(Options.Album());
 
 				string myOption = Console.ReadLine().ToLower().Replace(" ","");
@@ -46,7 +48,6 @@ namespace Presentation.Create
 				{
 					Console.Clear();
 					Console.WriteLine("Odaberite validnu opciju!");
-					_doneBool = false;
 				}
 			}
 			while (_doneBool == false);
@@ -95,6 +96,7 @@ namespace Presentation.Create
 
 			if (naziv == "*")
 			{
+				Console.Clear();
 				return;
 			}
 			else
@@ -116,6 +118,7 @@ namespace Presentation.Create
 
 			if (kataloskiBroj == "*")
 			{
+				Console.Clear();
 				return;
 			}
 			else
@@ -137,6 +140,7 @@ namespace Presentation.Create
 
 			if (godina == "*")
 			{
+				Console.Clear();
 				return;
 			}
 
@@ -181,6 +185,11 @@ namespace Presentation.Create
 				Console.Clear();
 				return true;
 			}
+		}
+
+		public IDTO GetDto()
+		{
+			return Album;
 		}
 	}
 }

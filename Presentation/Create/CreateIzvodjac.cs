@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using Domain.DTOs;
+using Domain.Interfaces;
 using Create.Enums;
+using Presentation.Create.Interfaces;
 
 namespace Presentation.Create
 {
-	public class CreateIzvodjac
+	public class CreateIzvodjac : ICreator
 	{
 		public IzvodjacDTO Izvodjac {get;}
 		private bool _doneBool = false;
@@ -109,6 +111,11 @@ namespace Presentation.Create
 				Console.Clear();
 				return true;
 			}
+		}
+
+		public IDTO GetDto()
+		{
+			return Izvodjac;
 		}
 	}
 }

@@ -1,6 +1,7 @@
 using System;
 using Domain.DTOs;
 using System.Collections.Generic;
+using Domain.Interfaces;
 
 namespace Presentation.Create
 {
@@ -39,6 +40,14 @@ namespace Presentation.Create
 			{
 				Console.WriteLine("ID: {0} Naziv: {1}", izvodjac.Key, izvodjac.Value);
 			}
+		}
+
+		static public void AddAlbumStats(IAlbumViewModel input)
+		{
+			Console.WriteLine("Id broj: {0}", input.Id);
+			Console.WriteLine("Naziv: {0}", input.Naziv);
+			Console.WriteLine("Kataloski broj: {0}", input.KataloskiBroj);
+			Console.WriteLine("Godina izdanja: {0}", input.GodinaIzdanja);
 		}
 	}
 }

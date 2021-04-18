@@ -2,23 +2,23 @@ using System;
 using DataInjector;
 using Domain.Interfaces;
 
-namespace Presentation.Read
+namespace Presentation.Create
 {
-	public class ReadOneInstance
+	public class Engine
 	{
 		private IViewModel _view;
 		private InjectSRU _inject;
 
-		public ReadOneInstance()
+		public Engine()
 		{
 			_inject = new InjectSRU();
 		}
-		
-		public bool DoSearch(IDTO input)
+
+		public bool DoSave(IDTO input)
 		{
 			try
 			{
-				_view = _inject.ReadData(input);
+				_view = _inject.SaveData(input);
 				return true;
 			}
 			catch (Exception ex)
