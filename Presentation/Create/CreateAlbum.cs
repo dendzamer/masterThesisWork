@@ -28,6 +28,8 @@ namespace Presentation.Create
 			do
 			{
 				Console.WriteLine("-------------------------------------------------------------------------------------------");
+				Console.WriteLine("Kreiranje novog albuma:");
+				Console.WriteLine("-------------------------------------------------------------------------------------------");
 				Stats.AlbumStats(Album);
 				Console.WriteLine("-------------------------------------------------------------------------------------------");
 				Console.WriteLine(Options.Album());

@@ -15,12 +15,16 @@ namespace Presentation.Create
 		private bool _doneBool = false;
 		private AddIzvodjacEnum _izbor;
 		private ReadOneInstance _read;
+		private Engine _engine;
+		private CreateIzvodjac _create;
 
 		public AddIzvodjac()
 		{
 			IdName = new Dictionary<int, string>();
 			IzvodjaciId = new List<int>();
 			_read = new ReadOneInstance();
+			_engine = new Engine();
+			_create = new CreateIzvodjac();
 		}
 
 		public void ChooseOptions()
@@ -32,6 +36,8 @@ namespace Presentation.Create
 
 			do
 			{
+				Console.WriteLine("-------------------------------------------------------------------------------------------");
+				Console.WriteLine("Dodavanje izvodjaca u fonogram:");
 				Console.WriteLine("-------------------------------------------------------------------------------------------");
 				Stats.AddIzvodjacStats(IdName);
 				Console.WriteLine("-------------------------------------------------------------------------------------------");
@@ -139,7 +145,15 @@ namespace Presentation.Create
 
 		private void kreirajIzvodjaca()
 		{
-
+			if (_create.PopulateEntries() == true)
+			{
+				if(_engine.DoSave(_create.Izvodjac))
+				{
+					Show.ShowSaved(_engine.GetViewModel());
+					ParseIzvodjac(_engine.GetViewModel());
+				}
+			}
+			Console.Clear();
 		}
 
 		private void pretraziIzvodjaca()

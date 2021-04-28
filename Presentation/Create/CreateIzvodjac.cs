@@ -27,6 +27,9 @@ namespace Presentation.Create
 			Console.Clear();
 			do
 			{
+				Console.WriteLine("-------------------------------------------------------------------------------------------");
+				Console.WriteLine("Kreiranje novog izvodjaca:");
+				Console.WriteLine("-------------------------------------------------------------------------------------------");
 				Stats.IzvodjacStats(Izvodjac);
 				Console.WriteLine("-------------------------------------------------------------------------------------------");
 

@@ -27,6 +27,8 @@ namespace Presentation.Create
 			while (_finishedBool == false)
 			{
                                 Console.WriteLine("-------------------------------------------------------------------------------------------");
+				Console.WriteLine("Glavni meni za kreiranje novih unosa:");
+                                Console.WriteLine("-------------------------------------------------------------------------------------------");
                                 Console.WriteLine(Options.MenuOptions());
 
 				string myOption = Console.ReadLine().ToLower().Replace(" ","");

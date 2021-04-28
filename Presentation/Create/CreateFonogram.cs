@@ -39,6 +39,8 @@ namespace Presentation.Create
 			do
 			{
 				Console.WriteLine("-------------------------------------------------------------------------------------------");
+				Console.WriteLine("Kreiranje novog fonograma:");
+				Console.WriteLine("-------------------------------------------------------------------------------------------");
 				Stats.FonogramStats(Fonogram, _fullIzvodjaci, albumNaziv);
 				Console.WriteLine("-------------------------------------------------------------------------------------------");
 				Console.WriteLine(Options.Fonogram());

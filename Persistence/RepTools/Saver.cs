@@ -14,8 +14,16 @@ namespace Persistence.RepTools
 			using (var db = new BazaContext())
 			{
 				db.Database.EnsureCreated();
-				db.Albumi.Add(input);
-				db.SaveChanges();
+				try
+				{
+					db.Albumi.Add(input);
+					db.SaveChanges();
+				}
+
+				catch (Exception ex)
+				{
+					throw new Exception("Desila se greska! Pokusajte ponovo!", ex);
+				}
 			}
 		}
 
@@ -24,8 +32,17 @@ namespace Persistence.RepTools
 			using (var db = new BazaContext())
 			{
 				db.Database.EnsureCreated();
-				db.Izvodjaci.Add(input);
-				db.SaveChanges();
+
+				try
+				{
+					db.Izvodjaci.Add(input);
+					db.SaveChanges();
+				}
+
+				catch (Exception ex)
+				{
+					throw new Exception("Desila se greska! Pokusajte ponovo!", ex);
+				}
 			}
 		}
 
@@ -35,9 +52,17 @@ namespace Persistence.RepTools
 			{
 
 				Fonogram fonogram = input;
-				Album album = db.Albumi.Single(p => p.AlbumId == input.AlbumId);
-				album.Fonogrami.Add(fonogram);
-				db.SaveChanges();
+				try
+				{
+					Album album = db.Albumi.Single(p => p.AlbumId == input.AlbumId);
+					album.Fonogrami.Add(fonogram);
+					db.SaveChanges();
+				}
+
+				catch (Exception ex)
+				{
+					throw new Exception("Desila se greska! Pokusajte ponovo!", ex);
+				}
 
 				return fonogram;
 			}

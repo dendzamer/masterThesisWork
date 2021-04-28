@@ -13,11 +13,15 @@ namespace Presentation.Create
 		private bool _doneBool = false;
 		private AddAlbumEnum _izbor;
 		private ReadOneInstance _read;
+		private CreateAlbum _create;
+		private Engine _engine;
 
 		public AddAlbum()
 		{
 			Album = new AlbumViewModel();
 			_read = new ReadOneInstance();
+			_create = new CreateAlbum();
+			_engine = new Engine();
 		}
 
 		public void ChooseOptions()
@@ -29,6 +33,8 @@ namespace Presentation.Create
 
 			do
 			{
+				Console.WriteLine("-------------------------------------------------------------------------------------------");
+				Console.WriteLine("Dodavanje albuma u fonogram:");
 				Console.WriteLine("-------------------------------------------------------------------------------------------");
 				Stats.AddAlbumStats(Album);
 				Console.WriteLine("-------------------------------------------------------------------------------------------");
@@ -124,8 +130,15 @@ namespace Presentation.Create
 
 		private void kreirajAlbum()
 		{
-
-
+			if (_create.PopulateEntries() == true)
+			{
+				if (_engine.DoSave(_create.Album))
+				{
+					Show.ShowSaved(_engine.GetViewModel());
+					Album = _engine.GetViewModel() as IAlbumViewModel;
+				}
+			}
+			Console.Clear();
 		}
 	}
 }
