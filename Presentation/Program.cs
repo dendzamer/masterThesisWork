@@ -5,6 +5,7 @@ using Domain.DTOs;
 using Domain.Interfaces;
 using Domain.ViewModels;
 using Presentation.Create;
+using Presentation.Read;
 
 namespace Presentation
 {
@@ -12,8 +13,10 @@ namespace Presentation
     {
         static void Main(string[] args)
         {
-		CreateMenu createMenu = new CreateMenu();
-		createMenu.ChooseOption();
+		ReadAlbum read = new ReadAlbum();
+		read.ChooseOptions();
+		//CreateMenu createMenu = new CreateMenu();
+		//createMenu.ChooseOption();
 		/*AddIzvodjac addIz = new AddIzvodjac();
 		addIz.ChooseOptions();
 		*/
@@ -25,7 +28,7 @@ namespace Presentation
 
 		Console.WriteLine($"\nNaziv: {fonogram.Naziv}\nKataloskiBroj: {fonogram.KataloskiBroj}\nGodina Izdanja: {fonogram.GodinaIzdanja}");
 		Console.ReadLine();
-		*/
+	*/	
 		
 
 		/*CreateIzvodjac create = new CreateIzvodjac();
