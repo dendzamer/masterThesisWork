@@ -13,6 +13,21 @@ namespace Persistence.RepTools
 			using (var db = new BazaContext())
 			{
 				IQueryable<Album> albumi = db.Albumi;
+				IQueryable<Fonogram> fonogrami = db.Fonogrami.Include(p => p.Izvodjaci);
+				List<Fonogram> fonogramiUAlbumu = new List<Fonogram>();
+
+				foreach (var album in albumi)
+				{
+					foreach(var fonogram in fonogrami)
+					{
+						if (fonogram.AlbumId == album.AlbumId)
+						{
+							fonogramiUAlbumu.Add(fonogram);
+						}
+
+					}
+				}
+
 				List<Album> povratniAlbumi = albumi.ToList();
 
 				return povratniAlbumi;

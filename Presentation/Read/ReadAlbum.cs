@@ -10,11 +10,13 @@ namespace Presentation.Read
 		private IAlbumDTO _album;
 		private bool _doneBool;
 		private Engine _engine;
+		private GetAllEngine _allEngine;
 		private AlbumEnum _izbor;
 
 		public ReadAlbum()
 		{
 			_engine = new Engine();
+			_allEngine = new GetAllEngine();
 		}
 
 		public void ChooseOptions()
@@ -145,6 +147,11 @@ namespace Presentation.Read
 
 		private void sviUnosi()
 		{
+			//OVDE STOJI INT 0 KAO INPUT PARAMETAR ZA POVLACENJE SVIH ALBUM UNOSA ZATO STO SAM TAKO PREDEFINISAO U GETALL KLASI U DATAINJECTOR-U. OVO BIH MOGAO DA RAZMISLIM I DA PROMENIM I DTO.
+			if (_allEngine.DoRetrieve(0))
+			{
+				ConvertAndShow.Album(_allEngine.GetViewModels());
+			}
 			Console.Clear();
 		}
 
@@ -156,6 +163,7 @@ namespace Presentation.Read
 			{
 				ConvertAndShow.Album(_engine.GetViewModels());
 			}
+			Console.Clear();
 		}
 	}
 }
