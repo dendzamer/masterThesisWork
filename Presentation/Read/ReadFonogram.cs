@@ -5,15 +5,15 @@ using Read.Enums;
 
 namespace Presentation.Read
 {
-	public class ReadAlbum
+	public class ReadFonogram
 	{
-		private IAlbumDTO _album;
+		private IFonogramDTO _fonogram;
 		private bool _doneBool;
 		private Engine _engine;
 		private GetAllEngine _allEngine;
 		private AlbumFonogramEnum _izbor;
 
-		public ReadAlbum()
+		public ReadFonogram()
 		{
 			_engine = new Engine();
 			_allEngine = new GetAllEngine();
@@ -26,16 +26,14 @@ namespace Presentation.Read
 
 			while (_doneBool == false)
 			{
-
 				Console.WriteLine("---------------------------------------------------------------");
-				Console.WriteLine("Pretraga albuma:");
+				Console.WriteLine("Pretraga fonograma:");
 				Console.WriteLine("---------------------------------------------------------------");
-				//ispisati opcije
-				Console.WriteLine(Options.Album());
+				Console.WriteLine(Options.Fonogram());
 
 				string odgovor = Console.ReadLine().ToLower().Replace(" ","");
 
-				if(Enum.TryParse(odgovor, out _izbor))
+				if (Enum.TryParse(odgovor, out _izbor))
 				{
 					callSwitch();
 				}
@@ -77,9 +75,9 @@ namespace Presentation.Read
 		{
 			Console.Clear();
 
-			_album = new AlbumDTO();
+			_fonogram = new FonogramDTO();
 
-			Console.WriteLine("Unesite naziv albuma koji zelite da pretrazite i pritisnite Enter.\nZa povratak na prethodni meni unesite znak \'*\' i pritisnite Enter:");
+                        Console.WriteLine("Unesite naziv fonograma koji zelite da pretrazite i pritisnite Enter.\nZa povratak na prethodni meni unesite znak \'*\' i pritisnite Enter:");
 
 			string odgovor = Console.ReadLine().ToUpper();
 
@@ -89,8 +87,8 @@ namespace Presentation.Read
 				return;
 			}
 
-			_album.Naziv = odgovor;
-			executeSearch(_album);
+			_fonogram.Naziv = odgovor;
+			executeSearch(_fonogram);
 			Console.Clear();
 		}
 
@@ -98,9 +96,9 @@ namespace Presentation.Read
 		{
 			Console.Clear();
 
-			_album = new AlbumDTO();
+			_fonogram = new FonogramDTO();
 
-			Console.WriteLine("Unesite kataloski broj albuma koji zelite da pretrazite i pritisnite Enter.\nZa povratak na prethodni meni unesite znak \'*\' i pritisnite Enter:");
+                        Console.WriteLine("Unesite kataloski broj fonograma koji zelite da pretrazite i pritisnite Enter.\nZa povratak na prethodni meni unesite znak \'*\' i pritisnite Enter:");
 
 			string odgovor = Console.ReadLine().ToUpper();
 
@@ -110,8 +108,8 @@ namespace Presentation.Read
 				return;
 			}
 
-			_album.KataloskiBroj = odgovor;
-			executeSearch(_album);
+			_fonogram.KataloskiBroj = odgovor;
+			executeSearch(_fonogram);
 			Console.Clear();
 		}
 
@@ -119,9 +117,10 @@ namespace Presentation.Read
 		{
 			Console.Clear();
 
-			_album = new AlbumDTO();
+			_fonogram = new FonogramDTO();
 
-			Console.WriteLine("Unesite godinu izdanja albuma koji zelite da pretrazite i pritisnite Enter.\nZa povratak na prethodni meni unesite znak \'*\' i pritisnite Enter:");
+                        Console.WriteLine("Unesite godinu izdanja fonograma koji zelite da pretrazite i pritisnite Enter.\nZa povratak na prethodni meni unesite znak \'*\' i pritisnite Enter:");
+
 			string odgovor = Console.ReadLine().ToUpper();
 
 			if (odgovor == "*")
@@ -134,8 +133,8 @@ namespace Presentation.Read
 
 			if (int.TryParse(odgovor, out godina))
 			{
-				_album.GodinaIzdanja = godina;
-				executeSearch(_album);
+				_fonogram.GodinaIzdanja = godina;
+				executeSearch(_fonogram);
 			}
 
 			else
@@ -147,21 +146,18 @@ namespace Presentation.Read
 
 		private void sviUnosi()
 		{
-			//OVDE STOJI INT 0 KAO INPUT PARAMETAR ZA POVLACENJE SVIH ALBUM UNOSA ZATO STO SAM TAKO PREDEFINISAO U GETALL KLASI U DATAINJECTOR-U. OVO BIH MOGAO DA RAZMISLIM I DA PROMENIM I DTO.
-			if (_allEngine.DoRetrieve(0))
+			if (_allEngine.DoRetrieve(1))
 			{
-				ConvertAndShow.Album(_allEngine.GetViewModels());
+				ConvertAndShow.Fonogram(_allEngine.GetViewModels());
 			}
 			Console.Clear();
 		}
 
-
 		private void executeSearch(IDTO input)
 		{
-		 
 			if (_engine.DoSave(input) == true)
 			{
-				ConvertAndShow.Album(_engine.GetViewModels());
+				ConvertAndShow.Fonogram(_engine.GetViewModels());
 			}
 			Console.Clear();
 		}

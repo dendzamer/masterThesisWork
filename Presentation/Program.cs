@@ -13,8 +13,10 @@ namespace Presentation
     {
         static void Main(string[] args)
         {
-		ReadAlbum read = new ReadAlbum();
+		ReadFonogram read = new ReadFonogram();
 		read.ChooseOptions();
+		//ReadAlbum read = new ReadAlbum();
+		//read.ChooseOptions();
 		//CreateMenu createMenu = new CreateMenu();
 		//createMenu.ChooseOption();
 		/*AddIzvodjac addIz = new AddIzvodjac();

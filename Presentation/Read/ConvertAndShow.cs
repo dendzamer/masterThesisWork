@@ -18,5 +18,17 @@ namespace Presentation.Read
 
 			ShowLists.Album(output);
 		}
+
+		static public void Fonogram(List<IViewModel> input)
+		{
+			List<IFonogramViewModel> output = new List<IFonogramViewModel>();
+
+			foreach (var model in input)
+			{
+				output.Add(model as IFonogramViewModel);
+			}
+
+			ShowLists.Fonogram(output);
+		}
 	}
 }

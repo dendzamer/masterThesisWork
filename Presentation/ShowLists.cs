@@ -22,6 +22,23 @@ namespace Presentation
 			Console.WriteLine("Pritisnite Enter za povratak na prethodni meni.");
 			Console.ReadLine();
 		}
+
+                static public void Fonogram(List<IFonogramViewModel> input)
+                {
+                        Console.WriteLine("*************************************************************");
+                        foreach (var fonogram in input)
+			{
+				Console.WriteLine("-----------------------------------------------------");
+				Console.WriteLine("Id: {0} Naziv: {1}", fonogram.Id, fonogram.Naziv);
+				Console.WriteLine("Naziv albuma: {0}", fonogram.AlbumNaziv);
+				Console.WriteLine("Godina izdanja: {0}", fonogram.GodinaIzdanja);
+				Console.WriteLine("Kataloski broj: {0}", fonogram.KataloskiBroj);
+				Console.WriteLine("Izvodjaci: {0}", fonogram.Izvodjaci);
+			}
+                        Console.WriteLine("*************************************************************");
+                        Console.WriteLine("Pritisnite Enter za povratak na prethodni meni.");
+                        Console.ReadLine();
+                }  
 	}
 }
 

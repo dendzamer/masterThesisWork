@@ -2,7 +2,7 @@ using System;
 
 namespace Read.Enums
 {
-	public enum AlbumEnum
+	public enum AlbumFonogramEnum
 	{
 		naziv = 1,
 		kataloskibroj = 2,
