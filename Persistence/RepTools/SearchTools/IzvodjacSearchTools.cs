@@ -16,6 +16,10 @@ namespace Persistence.RepTools.SearchTools
 				IQueryable<Izvodjac> izvodjaci = db.Izvodjaci.Include(p => p.Fonogrami);
 
 				List<Izvodjac> filtriraniIzvodjaci = izvodjaci.Where(p => p.Naziv.Contains(input)).ToList();
+				if (filtriraniIzvodjaci.Any() == false)
+				{
+					throw new Exception("Nema unosa sa tim nazivom!");
+				}
 
 				List<IDb> finalIzvodjaci = new List<IDb>();
 

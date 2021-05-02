@@ -16,6 +16,10 @@ namespace Persistence.RepTools.SearchTools
 				IQueryable<Fonogram> fonogrami = db.Fonogrami.Include(p => p.Izvodjaci);
 
 				List<Fonogram> filtriraniFonogrami = fonogrami.Where(p => p.Naziv.Contains(input)).ToList();
+				if (filtriraniFonogrami.Any() == false)
+				{
+					throw new Exception("Nema unosa sa tim nazivom!");
+				}
 
 				List<IDb> finalFonogrami = new List<IDb>();
 
@@ -35,6 +39,10 @@ namespace Persistence.RepTools.SearchTools
 				IQueryable<Fonogram> fonogrami = db.Fonogrami.Include(p => p.Izvodjaci);
 
 				List<Fonogram> filtriraniFonogrami = fonogrami.Where(p => p.KataloskiBroj.Contains(input)).ToList();
+				if (filtriraniFonogrami.Any() == false)
+				{
+					throw new Exception("Nema unosa sa tim kataloskim brojem!");
+				}
 
 				List<IDb> finalFonogrami = new List<IDb>();
 
@@ -54,6 +62,10 @@ namespace Persistence.RepTools.SearchTools
 				IQueryable<Fonogram> fonogrami = db.Fonogrami.Include(p => p.Izvodjaci);
 
 				List<Fonogram> filtriraniFonogrami = fonogrami.Where(p => p.GodinaIzdanja == input).ToList();
+				if (filtriraniFonogrami.Any() == false)
+				{
+					throw new Exception("Nema unosa sa tom godinom izdanja!");
+				}
 
 				List<IDb> finalFonogrami = new List<IDb>();
 
