@@ -28,7 +28,7 @@ namespace Domain.ViewModels
 			{
 				foreach (Album album in izvodjac.Albumi)
 				{
-					Albumi += String.Format($"\n{album.KataloskiBroj} {album.Naziv}");
+					Albumi += String.Format($"\n\t ID: {album.Id} Naziv: {album.Naziv}");
 				}
 			}
 			else
@@ -41,7 +41,7 @@ namespace Domain.ViewModels
 			{
 				foreach (Fonogram fonogram in izvodjac.Fonogrami)
 				{
-					Fonogrami += String.Format($"\n{fonogram.KataloskiBroj} {fonogram.Naziv}");
+					Fonogrami += String.Format($"\n\tID: {fonogram.Id} Naziv: {fonogram.Naziv}");
 				}
 			}
 			else

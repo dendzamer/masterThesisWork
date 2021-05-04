@@ -39,6 +39,21 @@ namespace Presentation
                         Console.WriteLine("Pritisnite Enter za povratak na prethodni meni.");
                         Console.ReadLine();
                 }  
+
+		static public void Izvodjac(List<IIzvodjacViewModel> input)
+		{
+			Console.WriteLine("*************************************************************");
+			foreach (var izvodjac in input)
+			{
+				Console.WriteLine("-----------------------------------------------------");
+				Console.WriteLine("Id: {0} Naziv: {1}", izvodjac.Id, izvodjac.Naziv);
+				Console.WriteLine("Fonogrami: {0}", izvodjac.Fonogrami);
+				Console.WriteLine("Albumi: {0}", izvodjac.Albumi);
+			}
+			Console.WriteLine("*************************************************************");
+			Console.WriteLine("Pritisnite Enter za povratak na prethodni meni.");
+			Console.ReadLine();
+		}
 	}
 }
 

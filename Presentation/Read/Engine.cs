@@ -15,7 +15,7 @@ namespace Presentation.Read
 			_inject = new InjectSRU();
 		}
 
-		public bool DoSave(IDTO input)
+		public bool DoSearch(IDTO input)
 		{
 			try
 			{

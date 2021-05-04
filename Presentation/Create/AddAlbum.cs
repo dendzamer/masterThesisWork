@@ -124,8 +124,9 @@ namespace Presentation.Create
 
 		private void pretraziAlbume()
 		{
-
-
+			ReadAlbum read = new ReadAlbum();
+			read.ChooseOption();
+			Console.Clear();
 		}
 
 		private void kreirajAlbum()

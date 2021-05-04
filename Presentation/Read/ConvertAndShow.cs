@@ -30,5 +30,17 @@ namespace Presentation.Read
 
 			ShowLists.Fonogram(output);
 		}
+
+		static public void Izvodjac(List<IViewModel> input)
+		{
+			List<IIzvodjacViewModel> output = new List<IIzvodjacViewModel>();
+
+			foreach (var model in input)
+			{
+				output.Add(model as IIzvodjacViewModel);
+			}
+
+			ShowLists.Izvodjac(output);
+		}
 	}
 }

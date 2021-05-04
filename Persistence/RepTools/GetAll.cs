@@ -49,7 +49,7 @@ namespace Persistence.RepTools
 		{
 			using (var db = new BazaContext())
 			{
-				IQueryable<Izvodjac> izvodjaci = db.Izvodjaci;
+				IQueryable<Izvodjac> izvodjaci = db.Izvodjaci.Include(p => p.Fonogrami);
 				List<Izvodjac> povratniIzvodjaci = izvodjaci.ToList();
 
 				return povratniIzvodjaci;

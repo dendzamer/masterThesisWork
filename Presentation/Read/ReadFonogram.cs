@@ -2,10 +2,11 @@ using System;
 using Domain.Interfaces;
 using Domain.DTOs;
 using Read.Enums;
+using Read.Interfaces;
 
 namespace Presentation.Read
 {
-	public class ReadFonogram
+	public class ReadFonogram : IReader
 	{
 		private IFonogramDTO _fonogram;
 		private bool _doneBool;
@@ -19,7 +20,7 @@ namespace Presentation.Read
 			_allEngine = new GetAllEngine();
 		}
 
-		public void ChooseOptions()
+		public void ChooseOption()
 		{
 			Console.Clear();
 			_doneBool = false;
@@ -155,7 +156,7 @@ namespace Presentation.Read
 
 		private void executeSearch(IDTO input)
 		{
-			if (_engine.DoSave(input) == true)
+			if (_engine.DoSearch(input) == true)
 			{
 				ConvertAndShow.Fonogram(_engine.GetViewModels());
 			}

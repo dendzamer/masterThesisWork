@@ -158,7 +158,9 @@ namespace Presentation.Create
 
 		private void pretraziIzvodjaca()
 		{
-
+			ReadIzvodjac read = new ReadIzvodjac();
+			read.ChooseOption();
+			Console.Clear();
 		}
 
 		private void izbrisiIzvodjaca()
