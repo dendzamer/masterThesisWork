@@ -6,6 +6,7 @@ using Domain.Interfaces;
 using Domain.ViewModels;
 using Presentation.Create;
 using Presentation.Read;
+using Presentation.Update;
 
 namespace Presentation
 {
@@ -13,8 +14,10 @@ namespace Presentation
     {
         static void Main(string[] args)
         {
-		ReadMenu menu = new ReadMenu();
-		menu.ChooseOption();
+		UpdateIzvodjac update = new UpdateIzvodjac();
+		update.ChooseOption();
+		//ReadMenu menu = new ReadMenu();
+		//menu.ChooseOption();
 		//ReadIzvodjac read = new ReadIzvodjac();
 		//read.ChooseOptions();
 		//ReadFonogram read = new ReadFonogram();

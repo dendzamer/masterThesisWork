@@ -1,0 +1,46 @@
+using System;
+
+namespace Presentation.Update
+{
+	public class Options
+	{
+		public static string Album()
+		{
+			string opcije = "\nOdaberite jednu opciju: "
+				+ "\n1) Da ispravite \'Naziv\' ukucajte broj 1 ili rec \'naziv\' i pritisnite Enter, "
+				+ "\n2) Da ispravite \'Kataloski broj\' ukucajte broj 2 ili rec \'kataloskibroj\' i pritisnite Enter, "
+				+ "\n3) Da ispravite \'Godina izdanja\' ukucajte broj 3 ili rec \'godinaizdanja\' i pritisnite Enter, "
+				+ "\n4) Da zavrsite i potvrdite sve unose ukucajte broj 4 ili rec \'zavrsi\' i pritisnite Enter, "
+				+ "\n5) Da se vratite na prethodni meni ukucajte broj 5 ili rec \'napusti\' i pritisnite Enter. \n";
+
+			return opcije;
+		}
+
+		public static string Izvodjac()
+		{
+			string opcije = "\nOdaberite jednu opciju: "
+				+ "\n1) Da ucitate izvodjaca ukucajte broj 1 ili rec \'ucitaj\' i pritisnite Enter, "
+				+ "\n2) Da ispravite \'Naziv\' ukucajte broj 2 ili rec \'naziv\' i pritisnite Enter, "
+				+ "\n3) Da pretrazite izvodjace ukucajte broj 3 ili rec \'pretrazi\' i pritisnite Enter, "
+				+ "\n4) Da sacuvate promene ukucajte broj 4 ili rec \'sacuvaj\' i pritisnite Enter, "
+				+ "\n5) Da se vratite na prethodni meni ukucajte broj 5 ili rec \'napusti\' i pritisnite Enter. \n";
+
+			return opcije;
+		}
+
+		public static string Fonogram()
+		{
+			string opcije = "\nOdaberite jednu opciju: "
+				+ "\n1) Da ispravite \'Naziv\' ukucajte broj 1 ili rec \'naziv\' i pritisnite Enter, "
+				+ "\n2) Da ispravite \'Kataloski broj\' ukucajte broj 2 ili rec \'kataloskibroj\' i pritisnite Enter, "
+				+ "\n3) Da ispravite \'Godina izdanja\' ukucajte broj 3 ili rec \'godinaizdanja\' i pritisnite Enter, "
+				+ "\n4) Da ispravite \'Izvodjace\' ukucajte broj 4 ili rec \'izvodjaci\' i pritisnite Enter, "
+				+ "\n5) Da ispravite \'Album\' ukucajte broj 5 ili rec \'album\' i pritisnite Enter, "
+				+ "\n6) Da zavrsite i potvrdite sve unose ukucajte broj 6 ili rec \'zavrsi\' i pritisnite Enter, "
+				+ "\n7) Da se vratite na prethodni meni ukucajte broj 7 ili rec \'napusti\' i pritisnite Enter. \n";
+
+			return opcije;
+		}
+
+	}
+}
