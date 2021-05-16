@@ -14,11 +14,15 @@ namespace Presentation.Update
 		private bool _doneBool = false;
 		private IzvodjacEnum _izbor;
 		private LoadDTO _load;
+		private Engine _engine;
+		ReadIzvodjac _read;
 
 		public UpdateIzvodjac()
 		{
 			_izvodjac = new IzvodjacDTO();
 			_load = new LoadDTO();
+			_engine = new Engine();
+			_read = new ReadIzvodjac();
 		}
 
 		public void ChooseOption()
@@ -65,7 +69,6 @@ namespace Presentation.Update
 					search();
 					break;
 				case IzvodjacEnum.sacuvaj:
-					_doneBool = true;
 					executeUpdate();
 					break;
 				case IzvodjacEnum.napusti:
@@ -86,20 +89,68 @@ namespace Presentation.Update
 
 		private void naziv()
 		{
+			if (_izvodjac.Id == 0)
+			{
+				Console.Clear();
+				Console.WriteLine("Izvodjac nije ucitan! Pritisnite Enter za povratak na prethodni meni.");
+				Console.ReadLine();
+				Console.Clear();
+				return;
+			}			
+
+			Console.Clear();
+			Stats.IzvodjacStats(_izvodjac);
+			Console.WriteLine("-------------------------------------------------------------------------------------------");
+			Console.WriteLine("Unesite novi naziv izvodjaca i pritisnite Enter. Za povratak na prethodni meni ukucajte znak \'*\' i pritisnite enter.");
+			Console.WriteLine("-------------------------------------------------------------------------------------------");
+
+			string naziv = Console.ReadLine().ToUpper();
 
 
+			if (naziv == "*")
+			{
+				Console.Clear();
+				return;
+			}
+			else if (naziv == "" || naziv == null)
+			{
+				Console.Clear();
+				Console.WriteLine("Neispravan unos! Pritisnite Enter za povrataka na prethodni meni!");
+				Console.ReadLine();
+				Console.Clear();
+			}
+			else
+			{
+				_izvodjac.Naziv = naziv;
+				Console.Clear();
+			}
 		}
 
 		private void search()
 		{
-
-
+			_read.ChooseOption();
+			Console.Clear();
 		}
 
 		private void executeUpdate()
 		{
+			if (_izvodjac.Id != 0)
+			{
+				if (_engine.DoSave(_izvodjac))
+				{
+					Show.ShowSaved(_engine.GetViewModel());
+					Console.Clear();
+				}
+			}
 
-
+			else
+			{
+				Console.Clear();
+				Console.WriteLine("Izvodjac nije ucitan! Pritisnite Enter za povratak na prethodni meni.");
+				Console.ReadLine();
+				Console.Clear();
+			}
+			
 		}
 	}
 }
