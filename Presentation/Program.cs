@@ -14,7 +14,7 @@ namespace Presentation
     {
         static void Main(string[] args)
         {
-		UpdateIzvodjac update = new UpdateIzvodjac();
+		UpdateFonogram update = new UpdateFonogram();
 		update.ChooseOption();
 		//ReadMenu menu = new ReadMenu();
 		//menu.ChooseOption();

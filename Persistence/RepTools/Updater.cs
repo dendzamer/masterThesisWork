@@ -37,7 +37,7 @@ namespace Persistence.RepTools
 				fonogram.Naziv = input.Naziv;
 				fonogram.GodinaIzdanja = input.GodinaIzdanja;
 				fonogram.KataloskiBroj = input.KataloskiBroj;
-				fonogram.AlbumId = input.AlbumId;
+				//fonogram.AlbumId = input.AlbumId;
 				db.SaveChanges();
 
 				return fonogram;
