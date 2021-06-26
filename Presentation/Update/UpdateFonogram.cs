@@ -1,20 +1,22 @@
 using System;
 using System.Collections.Generic;
+using Presentation;
 using Domain.DTOs;
 using Domain.Interfaces;
 using Presentation.Update.Enums;
 using Presentation.Read;
+using Presentation.Update.Interfaces;
 
 namespace Presentation.Update
 {
-	public class UpdateFonogram
+	public class UpdateFonogram : IUpdater
 	{
 		private FonogramDTO _fonogram;
 		private bool _doneBool = false;
-		private FonogramEnum _izbor;
+		private FonogramAlbumEnum _izbor;
 		private LoadDTO _load;
 		private Engine _engine;
-		ReadFonogram _read;
+		private	ReadFonogram _read;
 
 		public UpdateFonogram()
 		{
@@ -54,29 +56,29 @@ namespace Presentation.Update
 			}
 		}
 
-		private void callSwitch(FonogramEnum input)
+		private void callSwitch(FonogramAlbumEnum input)
 		{
 			switch(input)
 			{
-				case FonogramEnum.ucitaj:
+				case FonogramAlbumEnum.ucitaj:
 					loadFonogram();
 					break;
-				case FonogramEnum.naziv:
+				case FonogramAlbumEnum.naziv:
 					naziv();
 					break;
-				case FonogramEnum.kataloskibroj:
+				case FonogramAlbumEnum.kataloskibroj:
 					kataloskiBroj();
 					break;
-				case FonogramEnum.godinaizdanja:
+				case FonogramAlbumEnum.godinaizdanja:
 					godinaIzdanja();
 					break;
-				case FonogramEnum.pretrazi:
+				case FonogramAlbumEnum.pretrazi:
 					search();
 					break;
-				case FonogramEnum.sacuvaj:
+				case FonogramAlbumEnum.sacuvaj:
 					executeUpdate();
 					break;
-				case FonogramEnum.napusti:
+				case FonogramAlbumEnum.napusti:
 					_doneBool = true;
 					break;
 				default:
@@ -94,12 +96,8 @@ namespace Presentation.Update
 
 		private void naziv()
 		{
-			if (_fonogram.Id == 0)
+			if (isFonogramUcitan() == false)
 			{
-				Console.Clear();
-				Console.WriteLine("Fonogram nije ucitan! Pritisnite Enter za povratak na prethodni meni.");
-				Console.ReadLine();
-				Console.Clear();
 				return;
 			}
 
@@ -135,12 +133,8 @@ namespace Presentation.Update
 		private void kataloskiBroj()
 		{
 
-			if (_fonogram.Id == 0)
+			if (isFonogramUcitan() == false)
 			{
-				Console.Clear();
-				Console.WriteLine("Fonogram nije ucitan! Pritisnite Enter za povratak na prethodni meni.");
-				Console.ReadLine();
-				Console.Clear();
 				return;
 			}
 
@@ -176,14 +170,10 @@ namespace Presentation.Update
 		private void godinaIzdanja()
 		{
 
-                        if (_fonogram.Id == 0)
-                        {
-                                Console.Clear();
-                                Console.WriteLine("Fonogram nije ucitan! Pritisnite Enter za povratak na prethodni meni.");
-                                Console.ReadLine();
-                                Console.Clear();
-                                return;
-                        }
+			if (isFonogramUcitan() == false)
+			{
+				return;
+			}
 
                         Console.Clear();
                         Stats.FonogramStats(_fonogram);
@@ -216,6 +206,24 @@ namespace Presentation.Update
 			}
 		}
 
+		private bool isFonogramUcitan()
+		{
+
+                        if (_fonogram.Id == 0)
+                        {
+                                Console.Clear();
+                                Console.WriteLine("Fonogram nije ucitan! Pritisnite Enter za povratak na prethodni meni.");
+                                Console.ReadLine();
+                                Console.Clear();
+                                return false;
+                        }
+
+			else
+			{
+				return true;
+			}
+		}
+
 		private void search()
 		{
 			_read.ChooseOption();
@@ -240,11 +248,6 @@ namespace Presentation.Update
                                 Console.ReadLine();
                                 Console.Clear();
 			}
-
-
 		}
-
-
-
 	}
 }

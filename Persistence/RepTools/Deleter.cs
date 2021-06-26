@@ -12,11 +12,19 @@ namespace Persistence.RepTools
 		{
 			using (var db = new BazaContext())
 			{
-				Album album = db.Albumi.Single(p => p.AlbumId == input);
-				db.Albumi.Remove(album);
-				db.SaveChanges();
+				try
+				{
+					Album album = db.Albumi.Single(p => p.AlbumId == input);
+					db.Albumi.Remove(album);
+					db.SaveChanges();
 
-				return album;
+					return album;
+				}
+
+                                catch(Exception ex)
+                                {
+                                        throw new Exception("Nesto nije u redu sa bazom podataka! Pokusajte ponovo...", ex);
+                                }
 			}
 		}
 
@@ -24,11 +32,19 @@ namespace Persistence.RepTools
 		{
 			using (var db = new BazaContext())
 			{
-				Fonogram fonogram = db.Fonogrami.Single(p => p.FonogramId == input);
-				db.Fonogrami.Remove(fonogram);
-				db.SaveChanges();
+				try
+				{
+					Fonogram fonogram = db.Fonogrami.Single(p => p.FonogramId == input);
+					db.Fonogrami.Remove(fonogram);
+					db.SaveChanges();
 
-				return fonogram;
+					return fonogram;
+				}
+
+                                catch(Exception ex)
+                                {
+                                        throw new Exception("Nesto nije u redu sa bazom podataka! Pokusajte ponovo...", ex);
+                                }
 			}
 		}
 
@@ -36,11 +52,19 @@ namespace Persistence.RepTools
 		{
 			using (var db = new BazaContext())
 			{
-				Izvodjac izvodjac = db.Izvodjaci.Single(p => p.IzvodjacId == input);
-				db.Izvodjaci.Remove(izvodjac);
-				db.SaveChanges();
+				try
+				{
+					Izvodjac izvodjac = db.Izvodjaci.Single(p => p.IzvodjacId == input);
+					db.Izvodjaci.Remove(izvodjac);
+					db.SaveChanges();
 
-				return izvodjac;
+					return izvodjac;
+				}
+
+                                catch(Exception ex)
+                                {
+                                        throw new Exception("Nesto nije u redu sa bazom podataka! Pokusajte ponovo...", ex);
+                                }
 			}
 		}
 	}

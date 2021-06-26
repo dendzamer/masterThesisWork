@@ -2,7 +2,7 @@ using System;
 
 namespace Presentation.Update.Enums
 {
-	public enum FonogramEnum
+	public enum FonogramAlbumEnum
 	{
 		ucitaj = 1,
 		naziv = 2,

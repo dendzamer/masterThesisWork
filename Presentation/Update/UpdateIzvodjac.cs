@@ -1,13 +1,14 @@
 using System;
-using System.Collections.Generic;
+using Presentation;
 using Domain.DTOs;
 using Domain.Interfaces;
 using Presentation.Update.Enums;
 using Presentation.Read;
+using Presentation.Update.Interfaces;
 
 namespace Presentation.Update
 {
-	public class UpdateIzvodjac
+	public class UpdateIzvodjac : IUpdater
 	{
 	
 		private IzvodjacDTO _izvodjac;
@@ -15,7 +16,7 @@ namespace Presentation.Update
 		private IzvodjacEnum _izbor;
 		private LoadDTO _load;
 		private Engine _engine;
-		ReadIzvodjac _read;
+		private ReadIzvodjac _read;
 
 		public UpdateIzvodjac()
 		{

@@ -7,6 +7,7 @@ using Domain.ViewModels;
 using Presentation.Create;
 using Presentation.Read;
 using Presentation.Update;
+using Presentation.Delete;
 
 namespace Presentation
 {
@@ -14,8 +15,10 @@ namespace Presentation
     {
         static void Main(string[] args)
         {
-		UpdateFonogram update = new UpdateFonogram();
-		update.ChooseOption();
+		DeleteMenu delete = new DeleteMenu();
+		delete.ChooseOption();
+		//UpdateMenu update = new UpdateMenu();
+		//update.ChooseOption();
 		//ReadMenu menu = new ReadMenu();
 		//menu.ChooseOption();
 		//ReadIzvodjac read = new ReadIzvodjac();

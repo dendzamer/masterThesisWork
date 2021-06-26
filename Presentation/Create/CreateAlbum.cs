@@ -94,7 +94,7 @@ namespace Presentation.Create
 			Console.WriteLine("(Za povratak na prethodni meni ukucajte znak * i pritisnite Enter)");
 			Console.WriteLine("Ukucajte naziv albuma i pritisnite Enter:");
 
-			string naziv = Console.ReadLine();
+			string naziv = Console.ReadLine().ToUpper();
 
 			if (naziv == "*")
 			{
@@ -116,7 +116,7 @@ namespace Presentation.Create
 			Console.WriteLine("(Za povratak na prethodni meni ukucajte znak * i pritisnite Enter)");
 			Console.WriteLine("Ukucajte kataloski broj albuma i pritisnite Enter:");
 
-			string kataloskiBroj = Console.ReadLine();
+			string kataloskiBroj = Console.ReadLine().ToUpper();
 
 			if (kataloskiBroj == "*")
 			{
@@ -138,7 +138,7 @@ namespace Presentation.Create
 			Console.WriteLine("(Za povratak na prethodni meni ukucajte znak * i pritisnite Enter)");
 			Console.WriteLine("Ukucajte godinu izdanja albuma i pritisnite Enter:");
 
-			string godina = Console.ReadLine();
+			string godina = Console.ReadLine().ToUpper();
 
 			if (godina == "*")
 			{

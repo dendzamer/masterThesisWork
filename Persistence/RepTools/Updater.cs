@@ -12,16 +12,24 @@ namespace Persistence.RepTools
 		{
 			using (var db = new BazaContext())
 			{
-				IQueryable<Album> albumi = db.Albumi.Include(p => p.Fonogrami);
-				Album album = db.Albumi.Single(p => p.AlbumId == input.AlbumId);
+				try
+				{
+					IQueryable<Album> albumi = db.Albumi.Include(p => p.Fonogrami);
+					Album album = db.Albumi.Single(p => p.AlbumId == input.AlbumId);
 
-				album.Naziv = input.Naziv;
-				album.GodinaIzdanja = input.GodinaIzdanja;
-				album.KataloskiBroj = input.KataloskiBroj;
+					album.Naziv = input.Naziv;
+					album.GodinaIzdanja = input.GodinaIzdanja;
+					album.KataloskiBroj = input.KataloskiBroj;
 
-				db.SaveChanges();
+					db.SaveChanges();
 
-				return RetrieveAlbum.GetById(album.AlbumId);
+					return RetrieveAlbum.GetById(album.AlbumId);
+				}
+
+				catch(Exception ex)
+				{
+					throw new Exception("Nesto nije u redu sa bazom podataka! Pokusajte ponovo...", ex);
+				}
 			}
 		}
 
@@ -30,17 +38,24 @@ namespace Persistence.RepTools
 			using (var db = new BazaContext())
 			{
 
-				IQueryable<Fonogram> fonogrami = db.Fonogrami.Include(p => p.Izvodjaci);
-				Fonogram fonogram = fonogrami.Single(p => p.FonogramId == input.FonogramId);
-				
+				try
+				{
+					IQueryable<Fonogram> fonogrami = db.Fonogrami.Include(p => p.Izvodjaci);
+					Fonogram fonogram = fonogrami.Single(p => p.FonogramId == input.FonogramId);
 
-				fonogram.Naziv = input.Naziv;
-				fonogram.GodinaIzdanja = input.GodinaIzdanja;
-				fonogram.KataloskiBroj = input.KataloskiBroj;
-				//fonogram.AlbumId = input.AlbumId;
-				db.SaveChanges();
 
-				return fonogram;
+					fonogram.Naziv = input.Naziv;
+					fonogram.GodinaIzdanja = input.GodinaIzdanja;
+					fonogram.KataloskiBroj = input.KataloskiBroj;
+					db.SaveChanges();
+
+					return fonogram;
+				}
+
+				catch(Exception ex)
+				{
+					throw new Exception("Nesto nije u redu sa bazom podataka! Pokusajte ponovo...", ex);
+				}
 			}
 		}
 
@@ -48,6 +63,8 @@ namespace Persistence.RepTools
 		{
 			using (var db = new BazaContext())
 			{
+				try
+				{
 				IQueryable<Izvodjac> izvodjaci = db.Izvodjaci.Include(p => p.Fonogrami);
 				Izvodjac izvodjac = izvodjaci.Single(p => p.IzvodjacId == input.IzvodjacId);
 
@@ -56,6 +73,12 @@ namespace Persistence.RepTools
 				db.SaveChanges();
 
 				return izvodjac;
+				}
+
+				catch(Exception ex)
+				{
+					throw new Exception("Nesto nije u redu sa bazom podataka! Pokusajte ponovo...", ex);
+				}
 			}
 		}
 	}
