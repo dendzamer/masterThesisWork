@@ -3,10 +3,11 @@ using Presentation;
 using Presentation.Create;
 using Presentation.Create.Interfaces;
 using Create.Enums;
+using Presentation.Interfaces;
 
 namespace Presentation.Create
 {
-	public class CreateMenu
+	public class CreateMenu : IMenu
 	{
 		private MenuEnum _menu;
 		private Engine _engine;

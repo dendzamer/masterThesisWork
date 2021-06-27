@@ -1,12 +1,13 @@
 using System;
 using Presentation.Update.Enums;
 using Presentation.Update.Interfaces;
+using Presentation.Interfaces;
 
 namespace Presentation.Update
 {
-	public class UpdateMenu
+	public class UpdateMenu : IMenu
 	{
-		private MenuEnum _menu;
+		private MenuEnum _izbor;
 		private IUpdater _updater;
 		private bool _finishedBool;
 
@@ -26,9 +27,9 @@ namespace Presentation.Update
 
 				string myOption = Console.ReadLine().ToLower().Replace(" ","");
 
-				if (Enum.TryParse(myOption, out _menu))
+				if (Enum.TryParse(myOption, out _izbor))
 				{
-					callSwitch(_menu);
+					callSwitch(_izbor);
 				}
 
 				else

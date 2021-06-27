@@ -1,10 +1,11 @@
 using System;
 using Presentation.Delete.Enums;
 using Presentation.Delete.Interfaces;
+using Presentation.Interfaces;
 
 namespace Presentation.Delete
 {
-	public class DeleteMenu
+	public class DeleteMenu : IMenu
 	{
 		private MenuEnum _menu;
 		private IDeleter _deleter;

@@ -1,10 +1,11 @@
 using System;
 using Read.Enums;
 using Read.Interfaces;
+using Presentation.Interfaces;
 
 namespace Presentation.Read
 {
-	public class ReadMenu
+	public class ReadMenu : IMenu
 	{
 		private MenuEnum _menu;
 		private IReader _reader;
